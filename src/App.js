@@ -1,20 +1,22 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Navbar } from './components';
-import { Home, Projects, Contact } from './pages';
-import './App.css';
+import { Home, Projects, About } from './pages';
+import { Box } from '@mui/material';
 
 
 const App = () => {
-  const location = useLocation();
-
   return (
     <>
     <Navbar />
-    <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/projects" element={<Projects/>} />
-        <Route path="/contact" element={<Contact/>} />
-    </Routes>
+    <main>
+      <Box sx={{ px: '10%' }}> 
+        <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/projects" element={<Projects/>} />
+            <Route path="/about" element={<About/>} />
+        </Routes>
+      </Box>
+    </main>
     </>
   );
 }
