@@ -10,9 +10,9 @@ const Navbar = () => {
 
     return (
         <nav>
-            <Box display="flex" py={4} alignItems="center">
+            <Box display="flex" height="13vh" alignItems="center">
                 <Box flexGrow={1} px={isSmallScreen ? 3 : 6} textAlign="right" sx={{
-                    '& a': {textDecoration: 'none', '&.active': {'& button': {color: '#ffffff'}}},
+                    '& a': {textDecoration: 'none', '&.active': {'& button': {color: '#ffffff', fontWeight: 'bold'}}},
                     '& button': {textTransform: 'none', color: '#888888', px: 2, '&:hover': {color: "#dddddd"}}
                     }}>
                 {isSmallScreen ?
