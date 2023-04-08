@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Test = () => {
     return (
         <>
-            <motion.div exit={{ opacity: 0 }}>
+            <motion.div exit={{ opacity: 0 }} in={{ opacity: 1 } }>
                 <Typography variant="h1">H1</Typography>
                 <Typography variant="h1" fontWeight="bold">H1 Bold</Typography>
                 <Typography variant="h2">H2</Typography>

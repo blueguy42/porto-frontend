@@ -23,7 +23,16 @@
   background: #0b0b0b;
 }
 
+::-moz-selection { 
+  background: #3b3b3b,
+}
+
+::selection {
+  background: #3b3b3b;
+}
+
 body {
+  overflow-y: scroll;
   margin: 0;
   background-color: #0b0b0b;
   color: #ffffff;
@@ -69,4 +78,14 @@ code {
   50% {
     opacity: 0;
   }
+}
+
+.footer-link{
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-link:hover{
+  color: #bbbbbb;
 }

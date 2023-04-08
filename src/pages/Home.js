@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Typography, Box, useMediaQuery } from "@mui/material";
+import { Typography, Box, useMediaQuery, Grow } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
@@ -15,7 +15,7 @@ const Home = () => {
     const [anim, setAnim] = useState(0);
     return (
         <>  
-            <motion.div exit={{ opacity: 0 }}>
+            <motion.div exit={{ opacity: 0 } } initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <Box
                     display="flex"
                     flexDirection="row"
@@ -23,7 +23,7 @@ const Home = () => {
                     >
                     { anim === 0 && 
                     <>
-                        <Typography variant="h1" fontWeight="bold" textAlign="center">
+                        <Typography variant="h1" fontWeight="bold" textAlign="center" style={{ userSelect: "none" }}>
                             <TypeAnimation
                                 ref={ref}
                                 speed={300}
@@ -43,20 +43,18 @@ const Home = () => {
                     </>}
                     { anim === 1 &&
                     <>
-                        <Typography variant="h2" textAlign="center">
+                        <Typography variant="h2" textAlign="center" style={{ userSelect: "none" }}>
                             <TypeAnimation
                                 ref={ref}
                                 speed={200}
                                 cursor={false}
                                 className={CURSOR_CLASS_NAME}
                                 sequence={[
+                                    (el) => el.classList.remove(CURSOR_CLASS_NAME),
                                     '',
-                                    1000,
-                                    (el) => el.classList.remove(CURSOR_CLASS_NAME),
+                                    500,
                                     'My name',
-                                    (el) => el.classList.add(CURSOR_CLASS_NAME),
                                     700,
-                                    (el) => el.classList.remove(CURSOR_CLASS_NAME),
                                     'My name is',
                                     1000,
                                     () => setAnim(2),
@@ -68,25 +66,34 @@ const Home = () => {
                     </>}
                     { anim === 2 &&
                     <>
-                        <Typography variant="h2" fontWeight="bold" textAlign="center">
+                        <Typography variant="h2" fontWeight="bold" textAlign="center" style={{ userSelect: "none" }}>
                             <TypeAnimation
                                 ref={ref}
                                 speed={150}
                                 cursor={false}
                                 className={CURSOR_CLASS_NAME}
                                 sequence={[
+                                    (el) => el.classList.remove(CURSOR_CLASS_NAME),
                                     '',
                                     1000,
-                                    (el) => el.classList.remove(CURSOR_CLASS_NAME),
                                     'Ahmad Alfani Handoyo',
                                     2000,
                                     'Afan',
                                     2000,
+                                    '',
+                                    500,
+                                    () => setAnim(3),
                                 ]}
                                 wrapper="span"
                                 repeat={0}
                             />
                         </Typography>
+                    </>}
+                    { anim === 3 &&
+                    <>
+                        <Grow in={anim===3} timeout={1000}>
+                            <Typography variant="h1" textAlign="center">P INGPO HOME</Typography>
+                        </Grow>
                     </>}
                 </Box>
             </motion.div>
