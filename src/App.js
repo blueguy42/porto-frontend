@@ -4,16 +4,14 @@ import { Home, Projects, About, Test } from './pages';
 import { Box } from '@mui/material';
 import { AnimatePresence } from "framer-motion";
 
-
 const App = () => {
   const location = useLocation();
 
   return (
     <>
       <Navbar />
-      
       <main>
-        <Box sx={{ px: '10%' }} display="flex" minHeight="calc(100vh - 13vh - 13vh)" alignItems="center" justifyContent="center"> 
+        <Box sx={{ mx: '10%' }} display="flex" minHeight="calc(100vh - 13vh - 13vh)" alignItems="center" justifyContent="center"> 
           <AnimatePresence mode='wait'>
               <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Home/>} />
@@ -24,7 +22,9 @@ const App = () => {
             </AnimatePresence>
         </Box>
       </main>
+      <AnimatePresence mode='wait'>
       <Footer />
+      </AnimatePresence>
     </>
   );
 }
