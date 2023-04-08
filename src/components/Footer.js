@@ -12,7 +12,7 @@ const Footer = () => {
             <Box display="flex" px={isSmallScreen ? 3 : 6} height="13vh" justifyContent="center" alignItems="center" textAlign="center">
                 <NavLink to="/" className='footer-link' style={{ userSelect: "none" }}>
                     <Typography>
-                        © {year} Ahmad Alfani Handoyo | All Rights Reserved
+                        © {year} Ahmad Alfani Handoyo{!isSmallScreen && ` | All Rights Reserved`}
                     </Typography>
                 </NavLink>
             </Box>
