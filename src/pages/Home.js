@@ -1,18 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { Typography, Box, useMediaQuery, Grow, Grid } from "@mui/material";
-import { useTheme } from '@mui/material/styles';
+import { Typography, Box, Grow, Grid } from "@mui/material";
 import { motion } from "framer-motion";
-import { TypeAnimation } from 'react-type-animation';
+import Typewriter from 'typewriter-effect';
+import { BreakpointName } from "../utils";
 
 const Home = () => {
-    const ref = React.useRef(null);
-    const CURSOR_CLASS_NAME = 'custom-type-animation-cursor';
-
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const breakpoint = BreakpointName();
 
     const [anim, setAnim] = useState(0);
+    const [anim1, setAnim1] = useState(0);
 
     return (
         <>  
@@ -26,66 +23,103 @@ const Home = () => {
                     >
                     { anim === 0 && 
                     <>
-                        <Typography variant="h1" fontWeight="bold" textAlign="center" style={{ userSelect: "none" }}>
-                            <TypeAnimation
-                                ref={ref}
-                                speed={200}
-                                cursor={false}
-                                className={CURSOR_CLASS_NAME}
-                                sequence={[
-                                    1000,
-                                    (el) => el.classList.remove(CURSOR_CLASS_NAME),
-                                    ' Hi!',
-                                    1500,
-                                    '',
-                                    () => setAnim(1),
-                                ]}
-                                wrapper="span"
-                                repeat={0}
-                            />
+                        <Typography variant="h1" fontWeight="bold" textAlign="center">
+                            { anim1 === 0 &&
+                            <>
+                                <Typewriter
+                                    options={{ delay: 200, cursor: '|' }}
+                                    onInit={(typewriter) => {
+                                        typewriter.pauseFor(1000)
+                                        .callFunction(() => {
+                                            setAnim1(1);
+                                        })
+                                        .start();
+                                    }}
+                                />
+                            </>}
+                            { anim1 === 1 &&
+                            <>
+                                <Typewriter
+                                    options={{ delay: 100, cursor: '' }}
+                                    onInit={(typewriter) => {
+                                        typewriter.typeString('Hi!')
+                                        .pauseFor(1500)
+                                        .deleteAll(100)
+                                        .callFunction(() => {
+                                            setAnim(1);
+                                            setAnim1(0);
+                                        })
+                                        .start();
+                                    }}
+                                />
+                            </>  
+                            }
                         </Typography>
                     </>}
                     { (anim === 1 || anim === 2) &&
                     <>
-                        <Typography variant={ isSmallScreen? 'h5': 'h3'} textAlign="center" style={{ color: '#888888', userSelect: "none" }}>
-                            <TypeAnimation
-                                ref={ref}
-                                speed={150}
-                                cursor={false}
-                                className={CURSOR_CLASS_NAME}
-                                sequence={[
-                                    (el) => el.classList.remove(CURSOR_CLASS_NAME),
-                                    '',
-                                    500,
-                                    'My name is',
-                                    () => setAnim(2),
-                                ]}
-                                wrapper="span"
-                                repeat={0}
-                            />
+                        <Typography 
+                            variant={
+                                breakpoint === 'xs' ? 'h6' :
+                                breakpoint === 'sm' ? 'h5' :
+                                breakpoint === 'md' ? 'h4' :
+                                breakpoint === 'lg' ? 'h4' :
+                                'h3'}
+                            textAlign="center" style={{ color: '#888888'}}>
+                            { anim1 === 0 &&
+                            <>
+                                <Typewriter
+                                    options={{ delay: 50, cursor: '|' }}
+                                    onInit={(typewriter) => {
+                                        typewriter.pauseFor(500)
+                                        .callFunction(() => {
+                                            setAnim1(1);
+                                        })
+                                        .start();
+                                    }}
+                                />
+                            </>}
+                            { anim1 === 1 &&
+                            <>
+                                <Typewriter
+                                    options={{ delay: 50, cursor: '' }}
+                                    onInit={(typewriter) => {
+                                        typewriter.typeString('My name is')
+                                        .pauseFor(500)
+                                        .callFunction(() => {
+                                            setAnim(2);
+                                        })
+                                        .start();
+                                    }}
+                                />
+                            </>  
+                            }
                         </Typography>
                     </>}
                     { anim === 2 && 
                     <>
-                        <Typography variant={ isSmallScreen? 'h2': 'h1'} fontWeight="bold" textAlign="center" style={{ userSelect: "none" }}>
-                            <TypeAnimation
-                                ref={ref}
-                                speed={150}
-                                deletionSpeed={150}
-                                cursor={false}
-                                className={CURSOR_CLASS_NAME}
-                                sequence={[
-                                    (el) => el.classList.remove(CURSOR_CLASS_NAME),
-                                    '',
-                                    500,
-                                    'Ahmad Alfani Handoyo',
-                                    2000,
-                                    'Afan',
-                                    2000,
-                                    () => setAnim(3),
-                                ]}
-                                wrapper="span"
-                                repeat={0}
+                        <Typography
+                            variant={
+                                breakpoint === 'xs' ? 'h5' :
+                                breakpoint === 'sm' ? 'h4' :
+                                breakpoint === 'md' ? 'h2' :
+                                breakpoint === 'lg' ? 'h2' :
+                                'h1'}
+                            fontWeight="bold" textAlign="center">
+                            <Typewriter
+                                options={{ delay: 40, cursor: '' }}
+                                onInit={(typewriter) => {
+                                    typewriter.typeString('Ahmad Alfani Handoyo')
+                                    .pauseFor(2000)
+                                    .deleteAll(20)
+                                    .pauseFor(300)
+                                    .typeString('Afan')
+                                    .pauseFor(2200)
+                                    .callFunction(() => {
+                                        setAnim(3);
+                                    })
+                                    .start();
+                                }}
                             />
                         </Typography>
                     </>}
@@ -95,39 +129,57 @@ const Home = () => {
                     <>
                         <Grow in={anim===3} timeout={1500}>
                             <Grid container textAlign="center" alignContent="center" alignItems="center">
-                                <Grid xs={12} sm={6} p={{xs: 3, sm: 6}} display='flex' style={{justifyContent: isSmallScreen ? "center": "right", alignItems: 'center'}}>
-                                    <Box style={{position: "relative", display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: isSmallScreen ? '80vmin':'60vmin', maxHeight: isSmallScreen ? '80vmin':'60vmin', userSelect: "none" }}>
-                                        <img src="/assets/images/home/circle.png" alt="Circle background" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover'}}/>
+                                <Grid item xs={12} sm={6} p={{xs: 3, sm: 6}} display='flex' style={{justifyContent: breakpoint === 'xs' ? "center": "right", alignItems: 'center'}}>
+                                    <Box style={{position: "relative", display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: breakpoint === 'xs' ? '300px':'60vmin', maxHeight: breakpoint === 'xs' ? '300px':'60vmin', userSelect: "none" }}>
+                                        <img src="/assets/images/home/circle.png" alt="Circle background" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                         <Box style={{position: "absolute", zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100%', maxHeight: '100%', userSelect: "none"}}>
-                                            <img src="/assets/images/home/portrait_real.png" alt="Real portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover'}}/>
+                                            <img src="/assets/images/home/portrait_cartoon.png" alt="Cartoon portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                         </Box>
                                         <Box className="image-cartoon" style={{position: "absolute", zIndex: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100%', maxHeight: '100%', transition: '0.3s', userSelect: "none"}}>
-                                            <img src="/assets/images/home/portrait_cartoon.png" alt="Cartoon portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover'}}/>
+                                            <img src="/assets/images/home/portrait_real.png" alt="Real portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                         </Box>
                                     </Box>
                                 
                                 </Grid>
-                                <Grid xs={12} sm={6}>
-                                    <Typography color="#ffffff" variant={ isSmallScreen? 'h4': 'h2'} fontWeight="bold" textAlign={ isSmallScreen? 'center': 'left'}>
-                                        <TypeAnimation
-                                            ref={ref}
-                                            speed={60}
-                                            deletionSpeed={90}
-                                            cursor={false}
-                                            className={CURSOR_CLASS_NAME}
-                                            sequence={[
-                                                (el) => el.classList.remove(CURSOR_CLASS_NAME),
-                                                'Ahmad Alfani Handoyo',
-                                                2000,
-                                                'Afan',
-                                                2000,
-                                            ]}
-                                            wrapper="span"
-                                            repeat={Infinity}
-                                        />
+                                <Grid item xs={12} sm={6} pl={{xs: 0, sm: 0}}>
+                                    <Typography fontWeight="bold" textAlign={ breakpoint === 'xs' ? 'center': 'left'}
+                                        variant={
+                                            breakpoint === 'xs' ? 'h5' :
+                                            breakpoint === 'sm' ? 'h6' :
+                                            breakpoint === 'md' ? 'h4' :
+                                            breakpoint === 'lg' ? 'h4' :
+                                            'h2'}>
+                                    <Typewriter
+                                        options={{ delay: 40, cursor: '', loop: true }}
+                                        onInit={(typewriter) => {
+                                            typewriter.typeString('Ahmad Alfani Handoyo')
+                                            .pauseFor(1500)
+                                            .deleteAll(20)
+                                            .typeString('Afan')
+                                            .pauseFor(1500)
+                                            .deleteAll(20)
+                                            .start();
+                                        }}
+                                    />
                                     </Typography>
-                                    <Typography variant="h6" color="#bbbbbb" textAlign={ isSmallScreen? 'center': 'left'}>Computer Science Student at ITB</Typography>
-                                    <Typography variant="h6" color="#bbbbbb" textAlign={ isSmallScreen? 'center': 'left'}>Software Engineer</Typography>
+                                    <Typography color="#bbbbbb" textAlign={ breakpoint === 'xs' ? 'center': 'left'}
+                                        variant={
+                                            breakpoint === 'xs' ? 'body1' :
+                                            breakpoint === 'sm' ? 'body2' :
+                                            breakpoint === 'md' ? 'body2' :
+                                            breakpoint === 'lg' ? 'body1' :
+                                            'h6'}>
+                                        Computer Science Student at ITB
+                                    </Typography>
+                                    <Typography color="#bbbbbb" textAlign={ breakpoint === 'xs' ? 'center': 'left'}
+                                    variant={
+                                        breakpoint === 'xs' ? 'body1' :
+                                        breakpoint === 'sm' ? 'body2' :
+                                        breakpoint === 'md' ? 'body2' :
+                                        breakpoint === 'lg' ? 'body1' :
+                                        'h6'} >
+                                        Software Engineer
+                                    </Typography>
                                 </Grid>
                             </Grid>
                         </Grow>

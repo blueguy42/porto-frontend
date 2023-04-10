@@ -1,32 +1,33 @@
-import { Box, Button, IconButton, useMediaQuery, Grow } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Box, Button, IconButton, Grow } from '@mui/material';
 import { Home, AccountTree, Person2 } from '@mui/icons-material';
+import { BreakpointName } from "../utils";
 import { NavLink } from 'react-router-dom';
-
+import { PathnameArray } from "../utils";
 
 const Navbar = () => {
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const breakpoint = BreakpointName();
+    const path = PathnameArray();
+    console.log(path);
 
     return (
         <nav>
             <Grow in={true} timeout={1000}>
                 <Box display="flex" height="13vh" alignItems="center">
-                    <Box flexGrow={1} px={isSmallScreen ? 3 : 6} textAlign="right" sx={{
+                    <Box flexGrow={1} px={breakpoint === 'xs' ? 3 : 6} textAlign="right" sx={{
                         '& a': {textDecoration: 'none', '&.active': {'& button': {color: '#ffffff', fontWeight: 'bold'}}},
                         '& button': {textTransform: 'none', color: '#888888', px: 2, '&:hover': {color: "#dddddd"}}
                         }}>
-                    {isSmallScreen ?
+                    {breakpoint === 'xs' ?
                         <>
-                            <NavLink to="/" className={(navData) => (navData.isActive ? "active" : 'none')}><IconButton title="Home"> <Home /> </IconButton></NavLink>
-                            <NavLink to="/projects" className={(navData) => (navData.isActive ? "active" : 'none')}><IconButton title="Projects"> <AccountTree /> </IconButton></NavLink>
-                            <NavLink to="/about" className={(navData) => (navData.isActive ? "active" : 'none')}><IconButton title="About"> <Person2 /> </IconButton></NavLink>
+                            <NavLink to="/" className={path[0] === '' ? 'active':''}><IconButton title="Home"> <Home /> </IconButton></NavLink>
+                            <NavLink to="/projects" className={path[0] === 'projects' ? 'active':''}><IconButton title="Projects"> <AccountTree /> </IconButton></NavLink>
+                            <NavLink to="/about" className={path[0] === 'about' ? 'active':''}><IconButton title="About"> <Person2 /> </IconButton></NavLink>
                         </>
                         :
                         <>
-                            <NavLink to="/" className={(navData) => (navData.isActive ? "active" : 'none')}><Button>Home</Button></NavLink>
-                            <NavLink to="/projects" className={(navData) => (navData.isActive ? "active" : 'none')}><Button>Projects</Button></NavLink>
-                            <NavLink to="/about" className={(navData) => (navData.isActive ? "active" : 'none')}><Button>About</Button></NavLink>
+                            <NavLink to="/" className={path[0] === '' ? 'active':''}><Button>Home</Button></NavLink>
+                            <NavLink to="/projects" className={path[0] === 'projects' ? 'active':''}><Button>Projects</Button></NavLink>
+                            <NavLink to="/about" className={path[0] === 'about' ? 'active':''}><Button>About</Button></NavLink>
                         </>
                         }
                     
