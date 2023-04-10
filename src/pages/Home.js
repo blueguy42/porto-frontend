@@ -17,24 +17,26 @@ const Home = () => {
         return () => {
           rootElement.removeEventListener('mousemove', handleMouseMove);
         };
-      }, []);
+      });
 
-      function handleMouseMove(event) {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+    function handleMouseMove(event) {
+        if (anim === 3) {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
 
-        const minimum = Math.min(width, height) / 100;
-        
-        const x = (event.pageX - (width / 2)) * 2 / width;
-        const y = -(event.pageY - (height / 2)) * 2 / height;
+            const minimum = Math.min(width, height) / 100;
+            
+            const x = (event.pageX - (width / 2)) * 2 / width;
+            const y = -(event.pageY - (height / 2)) * 2 / height;
 
-        const imageBack = document.getElementById('image-back');
-        imageBack.style['transform'] = `translate(${-x * minimum}px, ${y * minimum}px)`;
-        const imageMiddle = document.getElementById('image-middle');
-        imageMiddle.style['transform'] = `translate(${-x * minimum * 2}px, ${y * minimum * 2 }px)`;
-        const imageTop = document.getElementById('image-top');
-        imageTop.style['transform'] = `translate(${-x * minimum * 2}px, ${y * minimum * 2 }px)`;
-      }
+            const imageBack = document.getElementById('image-back');
+            imageBack.style['transform'] = `translate(${-x * minimum}px, ${y * minimum}px)`;
+            const imageMiddle = document.getElementById('image-middle');
+            imageMiddle.style['transform'] = `translate(${-x * minimum * 2}px, ${y * minimum * 2 }px)`;
+            const imageTop = document.getElementById('image-top');
+            imageTop.style['transform'] = `translate(${-x * minimum * 2}px, ${y * minimum * 2 }px)`;
+        }
+    }
     
     return (
         <>  

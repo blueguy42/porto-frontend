@@ -7,7 +7,6 @@ import { PathnameArray } from "../utils";
 const Navbar = () => {
     const breakpoint = BreakpointName();
     const path = PathnameArray();
-    console.log(path);
 
     return (
         <nav>
