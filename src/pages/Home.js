@@ -20,7 +20,7 @@ const Home = () => {
       });
 
     function handleMouseMove(event) {
-        if (anim === 3) {
+        if (anim === 3 && breakpoint !== 'xs') {
             const width = window.innerWidth;
             const height = window.innerHeight;
 
