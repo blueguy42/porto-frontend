@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Typography, Box, Grow, Grid } from "@mui/material";
 import { motion } from "framer-motion";
 import Typewriter from 'typewriter-effect';
@@ -8,11 +8,37 @@ import { BreakpointName } from "../utils";
 const Home = () => {
     const breakpoint = BreakpointName();
 
-    const [anim, setAnim] = useState(0);
+    const [anim, setAnim] = useState(3);
     const [anim1, setAnim1] = useState(0);
 
+    useEffect(() => {
+        const rootElement = document.getElementById('root');
+        rootElement.addEventListener('mousemove', handleMouseMove);
+        return () => {
+          rootElement.removeEventListener('mousemove', handleMouseMove);
+        };
+      }, []);
+
+      function handleMouseMove(event) {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const minimum = Math.min(width, height) / 100;
+        
+        const x = (event.pageX - (width / 2)) * 2 / width;
+        const y = -(event.pageY - (height / 2)) * 2 / height;
+
+        const imageBack = document.getElementById('image-back');
+        imageBack.style['transform'] = `translate(${-x * minimum}px, ${y * minimum}px)`;
+        const imageMiddle = document.getElementById('image-middle');
+        imageMiddle.style['transform'] = `translate(${-x * minimum * 2}px, ${y * minimum * 2 }px)`;
+        const imageTop = document.getElementById('image-top');
+        imageTop.style['transform'] = `translate(${-x * minimum * 2}px, ${y * minimum * 2 }px)`;
+      }
+    
     return (
         <>  
+            <script type="text/javascript" src="/assets/scripts/homeHover.js"></script>
             <motion.div exit={{ opacity: 0 } } initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
             { (anim === 0 || anim === 1 || anim === 2) &&
                 <>
@@ -131,12 +157,12 @@ const Home = () => {
                             <Grid container textAlign="center" alignContent="center" alignItems="center">
                                 <Grid item xs={12} sm={6} p={{xs: 3, sm: 6}} display='flex' style={{justifyContent: breakpoint === 'xs' ? "center": "right", alignItems: 'center'}}>
                                     <Box style={{position: "relative", display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: breakpoint === 'xs' ? '300px':'60vmin', maxHeight: breakpoint === 'xs' ? '300px':'60vmin', userSelect: "none" }}>
-                                        <img src="/assets/images/home/circle.png" alt="Circle background" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
+                                        <img id="image-back" src="/assets/images/home/circle.png" alt="Circle background" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                         <Box style={{position: "absolute", zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100%', maxHeight: '100%', userSelect: "none"}}>
-                                            <img src="/assets/images/home/portrait_cartoon.png" alt="Cartoon portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
+                                            <img id="image-middle" src="/assets/images/home/portrait_cartoon.png" alt="Cartoon portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                         </Box>
                                         <Box className="image-cartoon" style={{position: "absolute", zIndex: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100%', maxHeight: '100%', transition: '0.3s', userSelect: "none"}}>
-                                            <img src="/assets/images/home/portrait_real.png" alt="Real portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
+                                            <img id="image-top" src="/assets/images/home/portrait_real.png" alt="Real portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                         </Box>
                                     </Box>
                                 
