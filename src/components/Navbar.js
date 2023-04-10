@@ -1,12 +1,14 @@
 import { Box, Button, IconButton, Grow } from '@mui/material';
 import { Home, AccountTree, Person2 } from '@mui/icons-material';
-import { BreakpointName } from "../utils";
 import { NavLink } from 'react-router-dom';
-import { PathnameArray } from "../utils";
+import { BreakpointName, PathnameArray } from "../utils";
 
 const Navbar = () => {
     const breakpoint = BreakpointName();
     const path = PathnameArray();
+
+    console.log(path);
+    console.log(path[0] === 'about' ? 'active':'');
 
     return (
         <nav>

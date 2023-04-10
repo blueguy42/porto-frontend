@@ -27,7 +27,7 @@ const Copyright = () => {
                             If anyone wishes to use any of the content or images on Ahmad Alfani Handoyo's website for commercial or other purposes, they must first obtain express written permission from the owner. This is a standard requirement in the industry and helps to protect the creator's rights.
                         </Typography>
                         <Typography paragraph variant={ breakpoint === 'xs' ? 'body2' : 'body1' } sx={{ mb: 2 }}>
-                            For permission to use any content or images on this website for commercial or other purposes, please contact <a href="mailto:ahmadalfanihandoyo1@gmail.com">ahmadalfanihandoyo1@gmail.com</a>
+                            For permission to use any content or images on this website for commercial or other purposes, please contact <a href="mailto:me@afanhandoyo.com">me@afanhandoyo.com</a>
                         </Typography>
                     </Box>
                 </Grow>

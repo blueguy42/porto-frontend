@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './components';
-import { Home, Projects, About, Test, Copyright } from './pages';
+import { Home, Projects, About, Test, Copyright, Page404 } from './pages';
 import { Box } from '@mui/material';
 import { AnimatePresence } from "framer-motion";
 
@@ -18,6 +18,7 @@ const App = () => {
                 <Route path="/about" element={<About/>} />
                 <Route path="/copyright" element={<Copyright/>} />
                 <Route path="/test" element={<Test/>} />
+                <Route path="*" element={<Page404/>} />
               </Routes>
             </AnimatePresence>
         </Box>
