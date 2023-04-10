@@ -8,7 +8,7 @@ import { BreakpointName } from "../utils";
 const Home = () => {
     const breakpoint = BreakpointName();
 
-    const [anim, setAnim] = useState(3);
+    const [anim, setAnim] = useState(0);
     const [anim1, setAnim1] = useState(0);
 
     useEffect(() => {
@@ -38,7 +38,6 @@ const Home = () => {
     
     return (
         <>  
-            <script type="text/javascript" src="/assets/scripts/homeHover.js"></script>
             <motion.div exit={{ opacity: 0 } } initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
             { (anim === 0 || anim === 1 || anim === 2) &&
                 <>
