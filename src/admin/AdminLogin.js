@@ -2,18 +2,21 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { firebase } from "../services";
 
-import { Grow, Box, Button } from "@mui/material";
+import { Google } from '@mui/icons-material';
+import { Grow, Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { BreakpointName, SetLocalStorage } from "../utils";
 
 const AdminLogin = () => {
     const breakpoint = BreakpointName();
-
-    // reference: https://dev.to/mdamirgauhar/firebase-google-authentication-with-react-gop
-
+    
     const app = initializeApp(firebase.config);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
+
+    provider.setCustomParameters({
+        prompt: 'select_account'
+    });
 
     const signInWithGoogle = () => {
         signInWithPopup(auth, provider)
@@ -29,10 +32,13 @@ const AdminLogin = () => {
         <>
             <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
                 <Grow in={true} timeout={1000}>
-                <Box flexGrow={1} px={breakpoint === 'xs' ? 3 : 6} textAlign="center" sx={{
-                    '& button': {textTransform: 'none', color: '#0b0b0b', backgroundColor: '#ffffff', px: 2, border: '1px solid #ffffff', borderRadius: '1rem', transition: '0.3s', '&:hover': {color: "#ffffff", backgroundColor: '#0b0b0b'}}
-                    }}>
-                    <Button onClick={signInWithGoogle}>Sign In with Google</Button>
+                <Box>
+                    <Typography sx={{mb: breakpoint === 'xs' ? 1 : breakpoint === 'sm' ? 3 : 5}} variant={breakpoint === 'xs' ? 'h4' : breakpoint === 'sm' ? 'h2' : 'h1'} fontWeight="bold" textAlign="center">Admin Login</Typography>
+                    <Box flexGrow={1}  textAlign="center" sx={{
+                        '& button': {textTransform: 'none', color: '#0b0b0b', backgroundColor: '#ffffff', maxWidth: '70%', px: breakpoint === 'xs' ? 2 : 6, py: breakpoint === 'xs' ? 1 : 2, border: '1px solid #ffffff', borderRadius: '1rem', transition: '0.3s', '&:hover': {color: "#ffffff", backgroundColor: '#0b0b0b'}}
+                        }}>
+                        <Button onClick={signInWithGoogle}><Google sx={{mr: breakpoint === 'xs' ? 1 : 2}}/> Sign In with Google</Button>
+                    </Box>
                 </Box>
                 </Grow>
             </motion.div>

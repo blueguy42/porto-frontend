@@ -25,7 +25,7 @@ const App = () => {
 
                 <Route path="/admin" element={<AdminLogin/>} />
                 
-                {/* <Route path="*" element={<Page404/>} /> */}
+                <Route path="*" element={<Page404/>} />
               </Routes>
             </AnimatePresence>
         </Box>
