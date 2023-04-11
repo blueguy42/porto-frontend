@@ -9,7 +9,7 @@ import { AdminNavbar, AdminLogin } from './admin';
 
 const App = () => {
   const location = useLocation();
-    const path = PathnameArray();
+  const path = PathnameArray();
   return (
     <>
       { path[0] !== 'admin' ? <Navbar /> : <AdminNavbar />}
@@ -25,7 +25,7 @@ const App = () => {
 
                 <Route path="/admin" element={<AdminLogin/>} />
                 
-                <Route path="*" element={<Page404/>} />
+                {/* <Route path="*" element={<Page404/>} /> */}
               </Routes>
             </AnimatePresence>
         </Box>
