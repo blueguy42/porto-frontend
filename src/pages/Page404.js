@@ -1,13 +1,14 @@
 import * as THREE from 'three'
 import { useRef, useState, useMemo, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Text, TrackballControls } from '@react-three/drei'
+import { Box, Button } from '@mui/material';
+import { motion } from "framer-motion";
 import { BreakpointName } from "../utils";
 
 const Page404 = () => {
     const breakpoint = BreakpointName();
-    const navigate = useNavigate();
     const randomWords = ['Oops!', 'Uh-oh!', 'Lost', 'Error!', '404', 'Missing', 'Dead end', 'No go', 'Fail', '404', 'Bummer', 'Whoops!', 'Oh no!', '404!', '404', 'Zilch', 'Blank', 'Huh?', 'Where?', '404', 'Fizzle', 'Kaput', 'Off track', 'Null', '404', 'Bye-bye', 'Vanished', 'Poof!', 'Oh dear', '404', 'No luck', 'Gone astray', 'No dice', 'Dead link', '404', 'Oopsie!', 'Darn it!', 'Oops-a-daisy!', 'Wrong turn', '404', 'Out of luck', 'Not happening', 'Lost and found', 'End of the line', '404', 'Ghosted', 'Derailed', 'Glitch', 'Fubar', '404', 'Bust', 'Foiled', 'Out of order', 'Misplaced', '404', 'Down the drain', 'Exiled', 'Cast adrift', 'No trace', '404', 'No way', 'Not today', 'Absent', 'Nothingness'];
 
     function Word({ children, ...props }) {
@@ -27,7 +28,7 @@ const Page404 = () => {
             ref.current.quaternion.copy(camera.quaternion)
             ref.current.material.color.lerp(color.set(hovered ? '#999999' : 'white'), 0.1)
         })
-        return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => navigate('/')} {...props} {...fontProps} children={children} />
+        return <Text ref={ref} onPointerOver={over} onPointerOut={out} {...props} {...fontProps} children={children} />
     }
 
     function Cloud({ count = 4, radius = 20 }) {
@@ -51,18 +52,23 @@ const Page404 = () => {
 
   return (
     <>
-        <div style={{display: "flex", width: "70vmin", height: "70vmin"}} onTouchEnd={() => {
-                if (breakpoint === 'xs') {
-                    console.log("Masuk siin");
-                    navigate('/');
-                    }
-                }} >
-            <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
-                <fog attach="fog" args={['#202025', 0, 80]} />
-                <Cloud count={8} radius={20} />
-                <TrackballControls />
-            </Canvas>
-        </div>
+    <motion.div exit={{ opacity: 0 } } initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
+        <Box maxHeight={`calc(100vh - 13vh - 13vh)`} display="flex" flexDirection="column" alignItems="center">
+            <div style={{display: "flex", width: "70vmin", height: "70vmin"}} >
+                <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
+                    <fog attach="fog" args={['#202025', 0, 80]} />
+                    <Cloud count={8} radius={20} />
+                    <TrackballControls />
+                </Canvas>
+            </div>
+            <Box flexGrow={1} px={breakpoint === 'xs' ? 3 : 6} textAlign="center" sx={{
+                '& a': {textDecoration: 'none'},
+                '& button': {textTransform: 'none', color: '#0b0b0b', backgroundColor: '#ffffff', px: 2, border: '1px solid #ffffff', borderRadius: '1rem', transition: '0.3s', '&:hover': {color: "#ffffff", backgroundColor: '#0b0b0b'}}
+                }}>
+                <Link to="/"><Button>Back to Home Page</Button></Link>
+            </Box>
+        </Box>
+    </motion.div>
     </>
 
   )

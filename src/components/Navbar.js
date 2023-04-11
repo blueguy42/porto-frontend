@@ -7,9 +7,6 @@ const Navbar = () => {
     const breakpoint = BreakpointName();
     const path = PathnameArray();
 
-    console.log(path);
-    console.log(path[0] === 'about' ? 'active':'');
-
     return (
         <nav>
             <Grow in={true} timeout={1000}>
@@ -20,15 +17,15 @@ const Navbar = () => {
                         }}>
                     {breakpoint === 'xs' ?
                         <>
-                            <NavLink to="/" className={path[0] === '' ? 'active':''}><IconButton title="Home"> <Home /> </IconButton></NavLink>
+                            <NavLink to="/"><IconButton title="Home"> <Home /> </IconButton></NavLink>
                             <NavLink to="/projects" className={path[0] === 'projects' ? 'active':''}><IconButton title="Projects"> <AccountTree /> </IconButton></NavLink>
-                            <NavLink to="/about" className={path[0] === 'about' ? 'active':''}><IconButton title="About"> <Person2 /> </IconButton></NavLink>
+                            <NavLink to="/about"><IconButton title="About"> <Person2 /> </IconButton></NavLink>
                         </>
                         :
                         <>
-                            <NavLink to="/" className={path[0] === '' ? 'active':''}><Button>Home</Button></NavLink>
+                            <NavLink to="/"><Button>Home</Button></NavLink>
                             <NavLink to="/projects" className={path[0] === 'projects' ? 'active':''}><Button>Projects</Button></NavLink>
-                            <NavLink to="/about" className={path[0] === 'about' ? 'active':''}><Button>About</Button></NavLink>
+                            <NavLink to="/about" ><Button>About</Button></NavLink>
                         </>
                         }
                     
