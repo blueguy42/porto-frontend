@@ -156,7 +156,7 @@ const Home = () => {
                     <>
                         <Grow in={anim===3} timeout={1500}>
                             <Grid container textAlign="center" alignContent="center" alignItems="center">
-                                <Grid item xs={12} sm={6} p={{xs: 3, sm: 6}} display='flex' style={{justifyContent: breakpoint === 'xs' ? "center": "right", alignItems: 'center'}}>
+                                <Grid item xs={12} sm={6} px={{xs: 3, sm: 6}} py={{xs: 3}} display='flex' style={{justifyContent: breakpoint === 'xs' ? "center": "right", alignItems: 'center'}}>
                                     <Box style={{position: "relative", display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: breakpoint === 'xs' ? '300px':'60vmin', maxHeight: breakpoint === 'xs' ? '300px':'60vmin', userSelect: "none" }}>
                                         <img id="image-back" src="/assets/images/home/circle.png" alt="Circle background" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                         <Box style={{position: "absolute", zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100%', maxHeight: '100%', userSelect: "none"}}>
