@@ -53,7 +53,7 @@ const Page404 = () => {
   return (
     <>
     <motion.div exit={{ opacity: 0 } } initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
-        <Box maxHeight={`calc(100vh - 13vh - 13vh)`} display="flex" flexDirection="column" alignItems="center">
+        <Box minHeight={`calc(100vh - 13vh - 13vh)`} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
             <div style={{display: "flex", width: "70vmin", height: "70vmin"}} >
                 <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
                     <fog attach="fog" args={['#202025', 0, 80]} />
@@ -61,7 +61,7 @@ const Page404 = () => {
                     <TrackballControls />
                 </Canvas>
             </div>
-            <Box flexGrow={1} px={breakpoint === 'xs' ? 3 : 6} textAlign="center" sx={{
+            <Box display="flex" px={breakpoint === 'xs' ? 3 : 6} textAlign="center" sx={{
                 '& a': {textDecoration: 'none'},
                 '& button': {textTransform: 'none', color: '#0b0b0b', backgroundColor: '#ffffff', px: 2, border: '1px solid #ffffff', borderRadius: '1rem', transition: '0.3s', '&:hover': {color: "#ffffff", backgroundColor: '#0b0b0b'}}
                 }}>
