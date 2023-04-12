@@ -48,7 +48,7 @@ const AdminApp = () => {
         setPostCheck(true);
         if (JSON.stringify(path) !== JSON.stringify(['admin', 'login'])) navigate('/admin/login');
     });
-  }, []);
+  }, [path]);
 
   return (
     <>
