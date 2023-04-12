@@ -1,7 +1,9 @@
-const GetLocalStorage = (key) => {
+const Get = (key) => {
     if (typeof localStorage !== "undefined") {
         return localStorage.getItem(key);
+    } else {
+        return null;
     }
 }
 
-export default GetLocalStorage;
+export default Get;

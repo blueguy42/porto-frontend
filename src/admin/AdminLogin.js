@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { firebase } from "../services";
@@ -5,9 +7,10 @@ import { firebase } from "../services";
 import { Google } from '@mui/icons-material';
 import { Grow, Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import { BreakpointName, SetLocalStorage } from "../utils";
+import { BreakpointName, ls } from "../utils";
 
 const AdminLogin = () => {
+    const navigate = useNavigate();
     const breakpoint = BreakpointName();
     
     const app = initializeApp(firebase.config);
@@ -21,8 +24,8 @@ const AdminLogin = () => {
     const signInWithGoogle = () => {
         signInWithPopup(auth, provider)
         .then((result) => {
-            SetLocalStorage("email", result.user.email);
-            SetLocalStorage("accessToken", result.user.accessToken);
+            ls.Set("accessToken", result.user.accessToken);
+            navigate('/admin/home');
         }).catch((error) => {
             console.log(error);
         });

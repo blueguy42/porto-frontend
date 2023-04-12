@@ -1,6 +1,5 @@
 import BreakpointName from './BreakpointName';
 import PathnameArray from './PathnameArray';
-import SetLocalStorage from './SetLocalStorage';
-import GetLocalStorage from './GetLocalStorage';
+const ls = require('./ls');
 
-export { BreakpointName, PathnameArray, SetLocalStorage, GetLocalStorage };
+export { BreakpointName, PathnameArray, ls };

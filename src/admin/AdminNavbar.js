@@ -1,11 +1,14 @@
 import { Box, Button, IconButton, Grow } from '@mui/material';
-import { Home, AccountTree, Person2, ArrowBackIos } from '@mui/icons-material';
+import { Home, AccountTree, Person2, ArrowBackIos, Logout } from '@mui/icons-material';
 import { Link, NavLink } from 'react-router-dom';
-import { BreakpointName, PathnameArray } from "../utils";
+import { BreakpointName, ls } from "../utils";
 
 const AdminNavbar = () => {
     const breakpoint = BreakpointName();
-    const path = PathnameArray();
+
+    const logout = () => {
+        ls.Remove('accessToken');
+    }
 
     return (
         <nav>
@@ -15,7 +18,7 @@ const AdminNavbar = () => {
                         '& a': {textDecoration: 'none'},
                         '& button': {textTransform: 'none', color: '#bbbbbb', px: 2, '&:hover': {color: "#ffffff"}}
                         }}>
-                        {breakpoint === 'xs' ?
+                        {breakpoint === 'xs' || breakpoint === 'sm' ?
                         <>
                             <NavLink to="/"><IconButton title="Home"> <ArrowBackIos /> </IconButton></NavLink>
                         </> :
@@ -26,19 +29,21 @@ const AdminNavbar = () => {
                     </Box>
                     <Box flexGrow={1} px={breakpoint === 'xs' ? 3 : 6} textAlign="right" sx={{
                         '& a': {textDecoration: 'none', '&.active': {'& button': {color: '#ffffff', fontWeight: 'bold'}}},
-                        '& button': {textTransform: 'none', color: '#888888', px: 2, '&:hover': {color: "#dddddd"}}
+                        '& button': {textTransform: 'none', color: '#888888', px: 1, '&:hover': {color: "#dddddd"}}
                         }}>
-                    {breakpoint === 'xs' ?
+                    {breakpoint === 'xs' || breakpoint === 'sm' ?
                         <>
-                            <NavLink to="/admin" className={path[0] === '' ? 'active':''}><IconButton title="Admin Home"> <Home /> </IconButton></NavLink>
-                            <NavLink to="/admin/projects" className={path[0] === 'projects' ? 'active':''}><IconButton title="Admin Projects"> <AccountTree /> </IconButton></NavLink>
-                            <NavLink to="/admin/about" className={path[0] === 'about' ? 'active':''}><IconButton title="Admin About"> <Person2 /> </IconButton></NavLink>
+                            <NavLink to="/admin/home"><IconButton title="Admin Home"> <Home /> </IconButton></NavLink>
+                            <NavLink to="/admin/projects"><IconButton title="Admin Projects"> <AccountTree /> </IconButton></NavLink>
+                            <NavLink to="/admin/about"><IconButton title="Admin About"> <Person2 /> </IconButton></NavLink>
+                            <NavLink to="/admin/login"><IconButton title="Admin Logout" onClick={logout}> <Logout /> </IconButton></NavLink>
                         </>
                         :
                         <>
-                            <NavLink to="/admin" className={path[0] === '' ? 'active':''}><Button>Home</Button></NavLink>
-                            <NavLink to="/admin/projects" className={path[0] === 'projects' ? 'active':''}><Button>Projects</Button></NavLink>
-                            <NavLink to="/admin/about" className={path[0] === 'about' ? 'active':''}><Button>About</Button></NavLink>
+                            <NavLink to="/admin/home"><Button>Home</Button></NavLink>
+                            <NavLink to="/admin/projects"><Button>Projects</Button></NavLink>
+                            <NavLink to="/admin/about"><Button>About</Button></NavLink>
+                            <NavLink to="/admin/login"><Button onClick={logout}>Logout</Button></NavLink>
                         </>
                         }
                     

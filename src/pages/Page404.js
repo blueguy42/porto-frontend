@@ -5,10 +5,8 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Text, TrackballControls } from '@react-three/drei'
 import { Box, Button, Typography } from '@mui/material';
 import { motion } from "framer-motion";
-import { BreakpointName } from "../utils";
 
 const Page404 = () => {
-    const breakpoint = BreakpointName();
     const randomWords = ['Oops!', 'Uh-oh!', 'Lost', 'Error!', '404', 'Missing', 'Dead end', 'No go', 'Fail', '404', 'Bummer', 'Whoops!', 'Oh no!', '404!', '404', 'Zilch', 'Blank', 'Huh?', 'Where?', '404', 'Fizzle', 'Kaput', 'Off track', 'Null', '404', 'Bye-bye', 'Vanished', 'Poof!', 'Oh dear', '404', 'No luck', 'Gone astray', 'No dice', 'Dead link', '404', 'Oopsie!', 'Darn it!', 'Oops-a-daisy!', 'Wrong turn', '404', 'Out of luck', 'Not happening', 'Lost and found', 'End of the line', '404', 'Ghosted', 'Derailed', 'Glitch', 'Fubar', '404', 'Bust', 'Foiled', 'Out of order', 'Misplaced', '404', 'Down the drain', 'Exiled', 'Cast adrift', 'No trace', '404', 'No way', 'Not today', 'Absent', 'Nothingness'];
 
     function Word({ children, ...props }) {

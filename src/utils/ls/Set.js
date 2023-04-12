@@ -1,7 +1,7 @@
-const SetLocalStorage = (key, value) => {
+const Set = (key, value) => {
     if (typeof localStorage !== "undefined") {
         localStorage.setItem(key, value);
     }
 }
 
-export default SetLocalStorage;
+export default Set;
