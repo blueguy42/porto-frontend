@@ -3,7 +3,7 @@ import { useRef, useState, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Text, TrackballControls } from '@react-three/drei'
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { motion } from "framer-motion";
 import { BreakpointName } from "../utils";
 
@@ -54,18 +54,18 @@ const Page404 = () => {
     <>
     <motion.div exit={{ opacity: 0 } } initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
         <Box minHeight={`calc(100vh - 13vh - 13vh)`} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-            <div style={{display: "flex", width: "70vmin", height: "70vmin"}} >
+            <div style={{display: "flex", width: "60vmin", height: "60vmin"}} >
                 <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
                     <fog attach="fog" args={['#202025', 0, 80]} />
                     <Cloud count={8} radius={20} />
                     <TrackballControls />
                 </Canvas>
             </div>
-            <Box display="flex" px={breakpoint === 'xs' ? 3 : 6} textAlign="center" sx={{
+            <Box display="flex" textAlign="center" sx={{
                 '& a': {textDecoration: 'none'},
-                '& button': {textTransform: 'none', color: '#0b0b0b', backgroundColor: '#ffffff', px: 2, border: '1px solid #ffffff', borderRadius: '1rem', transition: '0.3s', '&:hover': {color: "#ffffff", backgroundColor: '#0b0b0b'}}
+                '& button': {textTransform: 'none', color: '#0b0b0b', backgroundColor: '#ffffff', px: 2, py: 1, border: '1px solid #ffffff', borderRadius: '1rem', transition: '0.3s', '&:hover': {color: "#ffffff", backgroundColor: '#0b0b0b'}}
                 }}>
-                <Link to="/"><Button>Back to Home Page</Button></Link>
+                <Link to="/"><Button><Typography variant="caption" fontWeight="bold">Back to Home Page</Typography></Button></Link>
             </Box>
         </Box>
     </motion.div>
