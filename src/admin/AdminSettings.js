@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { Typography, Box, Grow } from "@mui/material";
+import { Typography, Box, Grow, TextField } from "@mui/material";
 import { motion } from "framer-motion";
 import { ls } from "../utils";
+import EditableLabel from 'react-inline-editing';
 
-const AdminAbout = () => {
+const AdminSettings = () => {
     const navigate = useNavigate();
 
     const [token, setToken] = useState('');
@@ -25,6 +26,14 @@ const AdminAbout = () => {
         }
     }, [navigate]);
 
+    const handleFocus = (text) => {
+        console.log('Focused with text: ' + text);
+    }
+
+    const handleFocusOut = (text) => {
+        console.log('Left editor with text: ' + text);
+    }
+
     return (
         <>
             <motion.div key={`${email} ${name} ${pageLoad}`} exit={{ opacity: 0 }} in={{ opacity: 1 } } style={{width: "100%"}}>
@@ -32,9 +41,22 @@ const AdminAbout = () => {
                 <>
                 <Grow in={true} timeout={1000}>
                     <Box>
-                        <Typography variant="h1" fontWeight="bold">Admin About</Typography>
+                        <Typography variant="h1" fontWeight="bold">Admin Settings</Typography>
                         <Typography variant="body1" fontWeight="bold">{email}</Typography>
                         <Typography variant="body1" fontWeight="bold">{name}</Typography>
+                        
+                        {/* https://www.npmjs.com/package/react-inline-editing */}
+                        <EditableLabel text='TEST EDITABLE LABEL'
+                            labelClassName='myLabelClass'
+                            inputClassName='myInputClass'
+                            inputWidth='200px'
+                            inputHeight='25px'
+                            inputMaxLength={50}
+                            labelFontWeight='bold'
+                            inputFontWeight='bold'
+                            onFocus={handleFocus}
+                            onFocusOut={handleFocusOut}
+                        />
                     </Box>
                 </Grow>
                 </>}
@@ -43,4 +65,4 @@ const AdminAbout = () => {
     );
 }
 
-export default AdminAbout;
+export default AdminSettings;

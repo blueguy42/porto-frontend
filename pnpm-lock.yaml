@@ -16,6 +16,7 @@ specifiers:
   framer-motion: ^10.11.2
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-inline-editing: ^1.0.10
   react-router-dom: ^6.10.0
   react-scripts: ^5.0.1
   three: ^0.151.3
@@ -38,6 +39,7 @@ dependencies:
   framer-motion: 10.11.2_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-inline-editing: 1.0.10_react@18.2.0
   react-router-dom: 6.10.0_biqbaboplfbrettd7655fr4n2y
   react-scripts: 5.0.1_adw3swr4ydh6iq3lwswdlblezq
   three: 0.151.3
@@ -9704,6 +9706,15 @@ packages:
 
   /react-error-overlay/6.0.11:
     resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
+    dev: false
+
+  /react-inline-editing/1.0.10_react@18.2.0:
+    resolution: {integrity: sha512-DSZPR02C2NO+4SlTuLhIhtn1i6v9uC8wGgg/XNMc5MGm/oVa/maqdUiQezjG4CzsAX6sUEe1LXywusstd+fOTQ==}
+    peerDependencies:
+      react: ^16.2.0
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:
