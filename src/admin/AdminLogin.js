@@ -9,7 +9,9 @@ import { Grow, Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { BreakpointName, ls } from "../utils";
 
-const AdminLogin = () => {
+function AdminLogin(props) {
+    const { loginError } = props;
+
     const navigate = useNavigate();
     const breakpoint = BreakpointName();
     
@@ -25,7 +27,7 @@ const AdminLogin = () => {
         signInWithPopup(auth, provider)
         .then((result) => {
             ls.Set("accessToken", result.user.accessToken);
-            navigate('/admin/home');
+            navigate('/admin/login');
         }).catch((error) => {
             console.log(error);
         });
@@ -36,7 +38,10 @@ const AdminLogin = () => {
             <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
                 <Grow in={true} timeout={1000}>
                 <Box>
-                    <Typography sx={{mb: breakpoint === 'xs' ? 1 : breakpoint === 'sm' ? 3 : 5}} variant={breakpoint === 'xs' ? 'h4' : breakpoint === 'sm' ? 'h2' : 'h1'} fontWeight="bold" textAlign="center">Admin Login</Typography>
+                    <Typography variant={breakpoint === 'xs' ? 'h4' : breakpoint === 'sm' ? 'h2' : 'h1'} fontWeight="bold" textAlign="center">Admin Login</Typography>
+                    <Typography sx={{mb: breakpoint === 'xs' ? 1 : breakpoint === 'sm' ? 3 : 5}} variant={breakpoint === 'xs' || breakpoint === 'sm' ? 'body2' : 'body1'} textAlign="center">
+                        {loginError !== '' ? loginError : <br/>}
+                    </Typography>
                     <Box flexGrow={1}  textAlign="center" sx={{
                         '& button': {textTransform: 'none', color: '#0b0b0b', backgroundColor: '#ffffff', maxWidth: '70%', px: breakpoint === 'xs' ? 2 : 6, py: breakpoint === 'xs' ? 1 : 2, border: '1px solid #ffffff', borderRadius: '1rem', transition: '0.3s', '&:hover': {color: "#ffffff", backgroundColor: '#0b0b0b'}}
                         }}>

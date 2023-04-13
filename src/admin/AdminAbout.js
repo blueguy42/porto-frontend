@@ -2,7 +2,7 @@ import { Typography, Box, Grow } from "@mui/material";
 import { motion } from "framer-motion";
 
 function AdminAbout(props) {
-    const { email } = props;
+    const { name, email } = props;
 
     return (
         <>
@@ -11,6 +11,7 @@ function AdminAbout(props) {
                     <Box>
                         <Typography variant="h1" fontWeight="bold">Admin About</Typography>
                         <Typography variant="body1" fontWeight="bold">{email}</Typography>
+                        <Typography variant="body1" fontWeight="bold">{name}</Typography>
                     </Box>
                 </Grow>
             </motion.div>
