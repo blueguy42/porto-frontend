@@ -1,15 +1,33 @@
-import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Routes, useLocation, Navigate, useNavigate } from 'react-router-dom';
 import { Footer } from '../components';
 import { Box } from '@mui/material';
 import { AnimatePresence } from "framer-motion";
-import { PathnameArray } from "../utils";
+import { PathnameArray, ls } from "../utils";
 
 import { AdminNavbar, AdminLogin, AdminHome, AdminProjects, AdminAbout, AdminSettings } from './';
 
+import axios from 'axios';
+
 const AdminApp = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const path = PathnameArray();
+
+  useEffect(() => {
+    if (location.pathname !== '/admin/login') {
+      axios.post(process.env.REACT_APP_BASE_URL + 'auth/validate', { token: ls.Get('token') })
+        .then(response => {
+          //pass
+        }).catch((error) => {
+            ls.Remove('token');
+            ls.Remove('email');
+            ls.Remove('name');
+            navigate('/admin/login');
+        });
+    }
+  }, []);
   return (
       <>
         <AdminNavbar />

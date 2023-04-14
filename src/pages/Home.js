@@ -17,7 +17,7 @@ const Home = () => {
         return () => {
           rootElement.removeEventListener('mousemove', handleMouseMove);
         };
-      });
+    });
 
     function handleMouseMove(event) {
         if (anim === 3 && breakpoint !== 'xs') {

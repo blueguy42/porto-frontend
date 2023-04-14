@@ -54,9 +54,6 @@ const AdminSettings = () => {
         }
     },[token]);
 
-    useEffect(() => {
-    }, [dataEmails]);
-
     const handleChange = (e, setFn) => {
         if (e.target.value.length > 0) {
             setFn(e.target.value);
