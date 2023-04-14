@@ -8,7 +8,7 @@ const Copyright = () => {
 
     return (
         <>
-            <motion.div exit={{ opacity: 0 }} in={{ opacity: 1 } } style={{width: "100%"}}>
+            <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
                 <Grow in={true} timeout={1000}>
                     <Box sx={{ mt: { xs: 2, sm: 3 }, mx: "10%", '& a': {textTransform: 'none', color: '#aaaaaa', transition: '0.3s', '&:hover': {color: "#ffffff"}} }} >
                         <Typography paragraph variant={ breakpoint === 'xs' ? 'body2' : 'body1' } sx={{ mb: 2 }}>

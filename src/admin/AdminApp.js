@@ -1,10 +1,10 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import { Footer } from '../components';
 import { Box } from '@mui/material';
 import { AnimatePresence } from "framer-motion";
 import { PathnameArray } from "../utils";
 
-import { AdminNavbar, AdminLogin, AdminHome, AdminProjects, AdminAbout, AdminSettings, Admin404 } from './';
+import { AdminNavbar, AdminLogin, AdminHome, AdminProjects, AdminAbout, AdminSettings } from './';
 
 const AdminApp = () => {
   const location = useLocation();
@@ -22,7 +22,7 @@ const AdminApp = () => {
                   <Route path="/admin/projects" element={<AdminProjects />} />
                   <Route path="/admin/about" element={<AdminAbout />} />
                   <Route path="/admin/settings" element={<AdminSettings />} />
-                  <Route path="/admin/*" element={<Admin404/>} />
+                  <Route path="/admin/*" element={<Navigate to="/admin/login" replace />} />
               </Routes>
             </AnimatePresence>
           </Box>

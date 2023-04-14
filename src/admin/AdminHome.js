@@ -27,7 +27,7 @@ const AdminHome = () => {
 
     return (
         <>
-            <motion.div key={`${email} ${name} ${pageLoad}`} exit={{ opacity: 0 }} in={{ opacity: 1 } } style={{width: "100%"}}>
+            <motion.div key={`${email} ${name} ${pageLoad}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
                 {pageLoad &&
                 <>
                 <Grow in={true} timeout={1000}>

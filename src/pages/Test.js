@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Test = () => {
     return (
         <>
-            <motion.div exit={{ opacity: 0 }} in={{ opacity: 1 } } style={{width: "100%"}}>
+            <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
                 <Grow in={true} timeout={1000}>
                     <Box>
                         <Typography variant="h1">variant="h1"</Typography>

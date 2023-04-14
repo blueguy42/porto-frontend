@@ -16,7 +16,7 @@ specifiers:
   framer-motion: ^10.11.2
   react: ^18.2.0
   react-dom: ^18.2.0
-  react-inline-editing: ^1.0.10
+  react-edit-text: ^5.1.0
   react-router-dom: ^6.10.0
   react-scripts: ^5.0.1
   three: ^0.151.3
@@ -39,7 +39,7 @@ dependencies:
   framer-motion: 10.11.2_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-inline-editing: 1.0.10_react@18.2.0
+  react-edit-text: 5.1.0_biqbaboplfbrettd7655fr4n2y
   react-router-dom: 6.10.0_biqbaboplfbrettd7655fr4n2y
   react-scripts: 5.0.1_adw3swr4ydh6iq3lwswdlblezq
   three: 0.151.3
@@ -4653,6 +4653,10 @@ packages:
 
   /cjs-module-lexer/1.2.2:
     resolution: {integrity: sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==}
+    dev: false
+
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
     dev: false
 
   /clean-css/5.3.2:
@@ -9704,17 +9708,21 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-error-overlay/6.0.11:
-    resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
-    dev: false
-
-  /react-inline-editing/1.0.10_react@18.2.0:
-    resolution: {integrity: sha512-DSZPR02C2NO+4SlTuLhIhtn1i6v9uC8wGgg/XNMc5MGm/oVa/maqdUiQezjG4CzsAX6sUEe1LXywusstd+fOTQ==}
+  /react-edit-text/5.1.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-CfHgzFUlWkAaC51YC4mzmr3sa34NNvDkf6/SGm91YAZYWNT4/dfhqg9EqzIdUOMQ2tR4cAnEaoi1qZ47taR46A==}
+    engines: {node: '>=16 || ^14.17'}
     peerDependencies:
-      react: ^16.2.0
+      react: '>= 16.3.0'
+      react-dom: '>= 16.3.0'
     dependencies:
+      classnames: 2.3.2
       prop-types: 15.8.1
       react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-error-overlay/6.0.11:
+    resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
     dev: false
 
   /react-is/16.13.1:
