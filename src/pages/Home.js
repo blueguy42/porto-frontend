@@ -27,7 +27,6 @@ const Home = () => {
             setSubtitle2(response.data.data.subtitle2);
         }).catch((error) => {
             console.error(error);
-            setEmailError('Error retrieving personal information');
         });
     },[]);
 
