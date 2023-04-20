@@ -5,11 +5,31 @@ import { motion } from "framer-motion";
 import Typewriter from 'typewriter-effect';
 import { BreakpointName } from "../utils";
 
+import axios from 'axios';
+
 const Home = () => {
     const breakpoint = BreakpointName();
 
     const [anim, setAnim] = useState(0);
     const [anim1, setAnim1] = useState(0);
+
+    const [ name, setName ] = useState('');
+    const [ nickname, setNickname ] = useState('');
+    const [ subtitle1, setSubtitle1 ] = useState('');
+    const [ subtitle2, setSubtitle2 ] = useState('');
+
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
+        .then(response => {
+            setName(response.data.data.name);
+            setNickname(response.data.data.nickname);
+            setSubtitle1(response.data.data.subtitle1);
+            setSubtitle2(response.data.data.subtitle2);
+        }).catch((error) => {
+            console.error(error);
+            setEmailError('Error retrieving personal information');
+        });
+    },[]);
 
     useEffect(() => {
         const rootElement = document.getElementById('root');
@@ -136,11 +156,11 @@ const Home = () => {
                             <Typewriter
                                 options={{ delay: 40, cursor: '' }}
                                 onInit={(typewriter) => {
-                                    typewriter.typeString('Ahmad Alfani Handoyo')
+                                    typewriter.typeString(name)
                                     .pauseFor(2000)
                                     .deleteAll(20)
                                     .pauseFor(300)
-                                    .typeString('Afan')
+                                    .typeString(nickname)
                                     .pauseFor(2200)
                                     .callFunction(() => {
                                         setAnim(3);
@@ -179,10 +199,10 @@ const Home = () => {
                                     <Typewriter
                                         options={{ delay: 40, cursor: '', loop: true }}
                                         onInit={(typewriter) => {
-                                            typewriter.typeString('Ahmad Alfani Handoyo')
+                                            typewriter.typeString(name)
                                             .pauseFor(1500)
                                             .deleteAll(20)
-                                            .typeString('Afan')
+                                            .typeString(nickname)
                                             .pauseFor(1500)
                                             .deleteAll(20)
                                             .start();
@@ -196,7 +216,7 @@ const Home = () => {
                                             breakpoint === 'md' ? 'body2' :
                                             breakpoint === 'lg' ? 'body1' :
                                             'h6'}>
-                                        Computer Science Student at ITB
+                                        {subtitle1}
                                     </Typography>
                                     <Typography color="#bbbbbb" textAlign={ breakpoint === 'xs' ? 'center': 'left'}
                                     variant={
@@ -205,7 +225,7 @@ const Home = () => {
                                         breakpoint === 'md' ? 'body2' :
                                         breakpoint === 'lg' ? 'body1' :
                                         'h6'} >
-                                        Software Engineer
+                                        {subtitle2}
                                     </Typography>
                                 </Grid>
                             </Grid>
