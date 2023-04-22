@@ -9,6 +9,7 @@ import { Google } from '@mui/icons-material';
 import { Grow, Box, Button, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { BreakpointName, ls } from "../utils";
+import { Loader } from '../components';
 
 import axios from 'axios';
 
@@ -69,7 +70,7 @@ const AdminLogin = () => {
     return (
         <>
             <motion.div key={`${errorMsg} ${pageLoad}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
-                {pageLoad &&
+                {pageLoad ?
                 <>
                     <Grow in={true} timeout={1000}>
                     <Box>
@@ -84,7 +85,8 @@ const AdminLogin = () => {
                         </Box>
                     </Box>
                     </Grow>
-                </>
+                </> :
+                <Loader />
                 }
             </motion.div>
         </>

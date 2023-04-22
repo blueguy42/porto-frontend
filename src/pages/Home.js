@@ -13,10 +13,10 @@ const Home = () => {
     const [anim, setAnim] = useState(0);
     const [anim1, setAnim1] = useState(0);
 
-    const [ name, setName ] = useState('');
-    const [ nickname, setNickname ] = useState('');
-    const [ subtitle1, setSubtitle1 ] = useState('');
-    const [ subtitle2, setSubtitle2 ] = useState('');
+    const [ name, setName ] = useState(-1);
+    const [ nickname, setNickname ] = useState(-1);
+    const [ subtitle1, setSubtitle1 ] = useState(-1);
+    const [ subtitle2, setSubtitle2 ] = useState(-1);
 
     useEffect(() => {
         axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')

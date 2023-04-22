@@ -3,14 +3,16 @@ import { useNavigate } from "react-router-dom";
 
 import { Typography, Box, Grow } from "@mui/material";
 import { motion } from "framer-motion";
-import { ls } from "../utils";
+import { ls, BreakpointName } from "../utils";
+import { Loader } from '../components';
 
-import { EditText, EditTextarea } from 'react-edit-text';
+import { EditTextarea } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 
 import axios from 'axios';
 
 const AdminSettings = () => {
+    const breakpoint = BreakpointName();
     const navigate = useNavigate();
 
     const [ token, setToken ] = useState('');
@@ -19,7 +21,7 @@ const AdminSettings = () => {
     const [ dataSuperuser, setDataSuperuser ] = useState(-1);
 
     const [ dataEmails, setDataEmails ] = useState(-1);
-    const [isEditingEmails, setIsEditingEmails] = useState(false);
+    const [ isEditingEmails, setIsEditingEmails ] = useState(false);
     const [ emailError, setEmailError ] = useState('');
 
     useEffect(() => {
@@ -55,11 +57,7 @@ const AdminSettings = () => {
     },[token]);
 
     const handleChange = (e, setFn) => {
-        if (e.target.value.length > 0) {
-            setFn(e.target.value);
-        } else {
-            setFn('');
-        }
+        setFn(e.target.value);
     };
 
     const handleSave = (val, func) => {
@@ -80,6 +78,7 @@ const AdminSettings = () => {
         validEmails.forEach((email) => {
             if (!email.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
                 valid = false;
+                setEmailError('Invalid email format');
             }
         });
         if (valid) {
@@ -111,20 +110,25 @@ const AdminSettings = () => {
                 console.error(error);
                 setEmailError('Error retrieving emails');
         });
-            setEmailError('Invalid email format');
         }
     };
-
 
     return (
         <>
             <motion.div key={`${pageLoad}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
-                {pageLoad && dataSuperuser !== -1 && dataEmails !== -1 &&
+                {pageLoad && dataSuperuser !== -1 && dataEmails !== -1 ?
                 <>
                 <Grow in={true} timeout={1000}>
                     <Box>
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left', mb: 2 }}>
-                            <Typography variant="h1" fontWeight="bold">Admin Settings</Typography>
+                            <Typography
+                                variant={
+                                    breakpoint === 'xs' ? 'h4' :
+                                    breakpoint === 'sm' ? 'h2' :
+                                    breakpoint === 'md' ? 'h2' :
+                                    breakpoint === 'lg' ? 'h1' :
+                                    'h1'}
+                            fontWeight="bold">Admin Settings</Typography>
                         </Box>
 
                         <Box sx={{mb: 3}} display="flex" flexDirection="column" justifyContent="left" alignItems="start" textAlign="left">
@@ -148,13 +152,11 @@ const AdminSettings = () => {
                             />
                             <Typography variant="body1" sx={{mt: 1}}>{emailError ? emailError : <br/>}</Typography>
                         </Box>
-                        <Box sx={{mb: 3}} display="flex" flexDirection="column" justifyContent="left" alignItems="start" textAlign="left">
-                            <Typography variant="h6" fontWeight="bold"> </Typography>
-                            <Typography variant="body1"> </Typography>
-                        </Box>
                     </Box>
                 </Grow>
-                </>}
+                </> :
+                <Loader />
+                }
             </motion.div>
         </>
     );
