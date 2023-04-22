@@ -1,5 +1,4 @@
 import { Grow, Box } from '@mui/material';
-import { motion } from "framer-motion";
 
 const Loader = () => {
     return (

@@ -84,14 +84,13 @@ const AdminSettings = () => {
         if (valid) {
             axios.put(process.env.REACT_APP_BASE_URL + 'email/put', { emails: validEmails }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
-                console.log(response);
+                setEmailError('');
             }).catch((error) => {
                 ls.Remove('token');
                 ls.Remove('email');
                 ls.Remove('name');
                 navigate('/admin/login');
             });
-            setEmailError('');
         } else {
             axios.get(process.env.REACT_APP_BASE_URL + 'email/get')
             .then(response => {

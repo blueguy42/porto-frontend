@@ -118,14 +118,13 @@ const AdminHome = () => {
         if (valid) {
             axios.put(process.env.REACT_APP_BASE_URL + 'personal/putName', { name }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
-                console.log(response);
+                setNameError('');
             }).catch((error) => {
                 ls.Remove('token');
                 ls.Remove('email');
                 ls.Remove('name');
                 navigate('/admin/login');
             });
-            setNameError('');
         } else {
             axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
             .then(response => {
@@ -151,14 +150,13 @@ const AdminHome = () => {
         if (valid) {
             axios.put(process.env.REACT_APP_BASE_URL + 'personal/putNickname', { nickname }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
-                console.log(response);
+                setNicknameError('');
             }).catch((error) => {
                 ls.Remove('token');
                 ls.Remove('email');
                 ls.Remove('name');
                 navigate('/admin/login');
             });
-            setNicknameError('');
         } else {
             axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
             .then(response => {
@@ -184,14 +182,13 @@ const AdminHome = () => {
         if (valid) {
             axios.put(process.env.REACT_APP_BASE_URL + 'personal/putSubtitle1', { subtitle1 }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
-                console.log(response);
+                setSubtitle1Error('');
             }).catch((error) => {
                 ls.Remove('token');
                 ls.Remove('email');
                 ls.Remove('name');
                 navigate('/admin/login');
             });
-            setSubtitle1Error('');
         } else {
             axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
             .then(response => {
@@ -217,14 +214,13 @@ const AdminHome = () => {
         if (valid) {
             axios.put(process.env.REACT_APP_BASE_URL + 'personal/putSubtitle2', { subtitle2 }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
-                console.log(response);
+                setSubtitle2Error('');
             }).catch((error) => {
                 ls.Remove('token');
                 ls.Remove('email');
                 ls.Remove('name');
                 navigate('/admin/login');
             });
-            setSubtitle2Error('');
         } else {
             axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
             .then(response => {

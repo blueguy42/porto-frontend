@@ -91,6 +91,16 @@ code {
   color: #bbbbbb;
 }
 
+.second-heading{
+  color: #777777;
+  transition: 0.3s;
+}
+
+.second-heading:hover{
+  text-shadow: 0 0 1px white;
+  color: #ffffff;
+}
+
 .image-cartoon{
   opacity: 1;
 }
