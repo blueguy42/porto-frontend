@@ -82,7 +82,7 @@ const AdminSettings = () => {
             }
         });
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'email/put', { emails: validEmails }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(process.env.REACT_APP_BASE_URL + 'email/put', { email: validEmails }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setEmailError('');
             }).catch((error) => {
