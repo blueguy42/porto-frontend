@@ -23,8 +23,8 @@ const About = () => {
                                     breakpoint === 'md' ? 'h5' :
                                     breakpoint === 'lg' ? 'h4' :
                                     'h2'} mb={4}>
-                                    Code with purpose,
-                                <Box className="second-heading">engineer with precision.</Box>
+                                    Code with purpose
+                                <Box className="second-heading">Engineer with precision</Box>
                             </Typography>
                             <Typography textAlign='left'
                                 variant={
@@ -33,7 +33,7 @@ const About = () => {
                                     breakpoint === 'md' ? 'body2' :
                                     breakpoint === 'lg' ? 'body1' :
                                     'body1'} mb={2}>
-                                    Hi, I'm Ahmad Alfani Handoyo, but you can call me Afan. Currently, I'm studying Computer Science at Institut Teknologi Bandung. I specialize in backend development, but I also have experience in frontend development and a strong interest in security and computer architecture.
+                                    Hi, I'm Ahmad Alfani Handoyo, but you can call me Afan. I am a software engineer currently studying Computer Science at Institut Teknologi Bandung. I specialize in backend development with experience in frontend development. I have a strong interest in security and computer architecture.
                             </Typography>
                             <Typography textAlign='left'
                                 variant={
