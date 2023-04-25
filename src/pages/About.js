@@ -23,8 +23,8 @@ const About = () => {
                                     breakpoint === 'md' ? 'h5' :
                                     breakpoint === 'lg' ? 'h3' :
                                     'h2'} mb={4}>
-                                    Code with purpose,
-                                <Box className="second-heading">engineer with precision.</Box>
+                                    Code with purpose,<br/>
+                                <span className="second-heading">engineer with precision.</span>
                             </Typography>
                             <Typography textAlign='left'
                                 variant={
@@ -46,7 +46,7 @@ const About = () => {
                             </Typography>
                         </Grid>
                         <Grid item xs={12} sm={12} md={6} lg={4} order={{ xs: 1, sm: 1, md: 2 }} display='flex' style={{justifyContent: "center", alignItems: 'center'}} flexDirection="column">
-                            <Box style={{position: "relative", display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: breakpoint === 'xs' ? '300px':'60vmin', maxHeight: breakpoint === 'xs' ? '300px':'60vmin', userSelect: "none" }}>
+                            <Box mt={{ xs: 4, sm: 4, md: 0 }} style={{position: "relative", display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: breakpoint === 'xs' ? '240px':'60vmin', maxHeight: breakpoint === 'xs' ? '240px':'60vmin', userSelect: "none" }}>
                                 <img id="image-back" src="/assets/images/home/circle.png" alt="Circle background" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                 <Box style={{position: "absolute", zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100%', maxHeight: '100%', userSelect: "none"}}>
                                     <img id="image-middle" src="/assets/images/home/portrait_cartoon.png" alt="Cartoon portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
@@ -55,29 +55,29 @@ const About = () => {
                                     <img id="image-top" src="/assets/images/home/portrait_real.png" alt="Real portrait" style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', pointerEvents: 'none'}}/>
                                 </Box>
                             </Box>
-                            <Box mt={3}
+                            <Box mt={4}
                             sx={{
-                                '& a': {'&.active': {'& button': {color: '#ffffff', fontWeight: 'bold'}}},
-                                '& button': {transition: "0.3s", color: '#888888', px: 2, '&:hover': {color: "#dddddd"}}
+                                '& a': { mx: { xs: 0, sm: 1, md: 1, lg: 0, xl: 1 }, '&.active': {'& button': {color: '#ffffff', fontWeight: 'bold'}}},
+                                '& button': {transition: "0.3s", color: '#888888', '&:hover': {color: "#dddddd"}}
                             }}>
                                 <Link href="mailto:ahmadalfanihandoyo1@gmail.com" target="_blank" rel="noopener noreferrer">
                                     <Tooltip title="Email" arrow TransitionComponent={Zoom} componentsProps={{tooltip: { sx: { bgcolor: "#222222", '& .MuiTooltip-arrow': { color: "#222222"}}} }}>
-                                        <IconButton fontSize="large"> <Mail /> </IconButton>
+                                        <IconButton> <Mail sx={{ fontSize: { xs: 32, sm: 42, md: 40, lg: 36, xl: 44 } }}/> </IconButton>
                                     </Tooltip>
                                 </Link>
                                 <Link href="https://www.linkedin.com/in/ahmad-alfani-handoyo" target="_blank" rel="noopener noreferrer">
                                     <Tooltip title="LinkedIn" arrow TransitionComponent={Zoom} componentsProps={{tooltip: { sx: { bgcolor: "#222222", '& .MuiTooltip-arrow': { color: "#222222"}}} }}>
-                                        <IconButton fontSize="large"> <LinkedIn /> </IconButton>
+                                        <IconButton> <LinkedIn sx={{ fontSize: { xs: 32, sm: 42, md: 40, lg: 36, xl: 44 } }}/> </IconButton>
                                     </Tooltip>
                                 </Link>
                                 <Link href="https://github.com/blueguy42" target="_blank" rel="noopener noreferrer">
                                     <Tooltip title="GitHub" arrow TransitionComponent={Zoom} componentsProps={{tooltip: { sx: { bgcolor: "#222222", '& .MuiTooltip-arrow': { color: "#222222"}}} }}>
-                                        <IconButton fontSize="large"> <GitHub /> </IconButton>
+                                        <IconButton> <GitHub sx={{ fontSize: { xs: 32, sm: 42, md: 40, lg: 36, xl: 44 } }}/> </IconButton>
                                     </Tooltip>
                                 </Link>
                                 <Link href="https://www.instagram.com/afanhandoyo" target="_blank" rel="noopener noreferrer">
                                     <Tooltip title="Instagram" arrow TransitionComponent={Zoom} componentsProps={{tooltip: { sx: { bgcolor: "#222222", '& .MuiTooltip-arrow': { color: "#222222"}}} }}>
-                                        <IconButton fontSize="large"> <Instagram /> </IconButton>
+                                        <IconButton> <Instagram sx={{ fontSize: { xs: 32, sm: 42, md: 40, lg: 36, xl: 44 } }}/> </IconButton>
                                     </Tooltip>
                                 </Link>
                             </Box>
