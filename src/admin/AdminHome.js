@@ -105,11 +105,10 @@ const AdminHome = () => {
     const saveName = (name) => {
         let valid = true;
 
-        if (name.length > 20) {
-            valid = false;
-            setNameError('Name string exceeds 20 characters')
-            
-        } else if (name.length === 0) {
+        name = name.trim();
+        setDataName(name);
+
+        if (name.length === 0) {
             valid = false;
             setNameError('Name cannot be empty');
         }
@@ -138,10 +137,10 @@ const AdminHome = () => {
     const saveNickname = (nickname) => {
         let valid = true;
 
-        if (nickname.length > 10) {
-            valid = false;
-            setNicknameError('Nickname string exceeds 10 characters');
-        } else if (nickname.length === 0) {
+        nickname = nickname.trim();
+        setDataNickname(nickname);
+
+        if (nickname.length === 0) {
             valid = false;
             setNicknameError('Nickname cannot be empty');
         }
@@ -170,10 +169,10 @@ const AdminHome = () => {
     const saveSubtitle1 = (subtitle1) => {
         let valid = true;
 
-        if (subtitle1.length > 32) {
-            valid = false;
-            setSubtitle1Error('Subtitle 1 string exceeds 32 characters');
-        } else if (subtitle1.length === 0) {
+        subtitle1 = subtitle1.trim();
+        setDataSubtitle1(subtitle1);
+
+        if (subtitle1.length === 0) {
             valid = false;
             setSubtitle1Error('Subtitle 1 cannot be empty');
         }
@@ -202,10 +201,10 @@ const AdminHome = () => {
     const saveSubtitle2 = (subtitle2) => {
         let valid = true;
 
-        if (subtitle2.length > 32) {
-            valid = false;
-            setSubtitle2Error('Subtitle 2 string exceeds 32 characters');
-        } else if (subtitle2.length === 0) {
+        subtitle2 = subtitle2.trim();
+        setDataSubtitle2(subtitle2);
+
+        if (subtitle2.length === 0) {
             valid = false;
             setSubtitle2Error('Subtitle 2 cannot be empty');
         }
@@ -233,12 +232,12 @@ const AdminHome = () => {
 
     return (
         <>
-            <motion.div key={`${pageLoad}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
+            <motion.div key={`${pageLoad && dataName !== -1 && dataNickname !== -1 && dataSubtitle1 !== -1 && dataSubtitle2 !== -1}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
                 {pageLoad && dataName !== -1 && dataNickname !== -1 && dataSubtitle1 !== -1 && dataSubtitle2 !== -1 ?
                 <>
                 <Grow in={true} timeout={1000}>
                     <Box>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left', mb: 2 }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left', mb: 2 }}>
                             <Typography
                                 variant={
                                     breakpoint === 'xs' ? 'h4' :
@@ -251,7 +250,7 @@ const AdminHome = () => {
                         
                         <Box sx={{mb: 3}} display="flex" flexDirection="column" justifyContent="left" alignItems="start" textAlign="left">
                             <Typography variant="h6" fontWeight="bold">Name</Typography>
-                            <Typography variant="caption" sx={{ mb: 1 }}>Maximum length 20 characters. Current: {dataName.length} characters</Typography>
+                            <Typography variant="caption" sx={{ mb: 1 }}>Maximum length 20 characters. Current: {dataName.length} characters.</Typography>
                             <EditTextarea
                                 id='name'
                                 name='name'
@@ -261,6 +260,9 @@ const AdminHome = () => {
                                 onBlur={handleBlurName}
                                 onChange={(e) => {
                                     e.target.value = e.target.value.replace(/[\n\r]/g, '');
+                                    if (e.target.value.length > 20) {
+                                        e.target.value = e.target.value.substring(0, 20);
+                                    }
                                     handleChange(e, setDataName);
                                 }}
                                 onSave={({value}) => handleSave(value, saveName)}
@@ -270,7 +272,7 @@ const AdminHome = () => {
                         </Box>
                         <Box sx={{mb: 3}} display="flex" flexDirection="column" justifyContent="left" alignItems="start" textAlign="left">
                             <Typography variant="h6" fontWeight="bold">Nickname</Typography>
-                            <Typography variant="caption" sx={{ mb: 1 }}>Maximum length 10 characters. Current: {dataNickname.length} characters</Typography>
+                            <Typography variant="caption" sx={{ mb: 1 }}>Maximum length 10 characters. Current: {dataNickname.length} characters.</Typography>
                             <EditTextarea
                                 id='nickname'
                                 name='nickname'
@@ -280,6 +282,9 @@ const AdminHome = () => {
                                 onBlur={handleBlurNickname}
                                 onChange={(e) => {
                                     e.target.value = e.target.value.replace(/[\n\r]/g, '');
+                                    if (e.target.value.length > 10) {
+                                        e.target.value = e.target.value.substring(0, 10);
+                                    }
                                     handleChange(e, setDataNickname);
                                 }}
                                 onSave={({value}) => handleSave(value, saveNickname)}
@@ -289,7 +294,7 @@ const AdminHome = () => {
                         </Box>
                         <Box sx={{mb: 3}} display="flex" flexDirection="column" justifyContent="left" alignItems="start" textAlign="left">
                             <Typography variant="h6" fontWeight="bold">Subtitle 1</Typography>
-                            <Typography variant="caption" sx={{ mb: 1 }}>Maximum length 32 characters. Current: {dataSubtitle1.length} characters</Typography>
+                            <Typography variant="caption" sx={{ mb: 1 }}>Maximum length 32 characters. Current: {dataSubtitle1.length} characters.</Typography>
                             <EditTextarea
                                 id='subtitle1'
                                 name='subtitle1'
@@ -299,6 +304,9 @@ const AdminHome = () => {
                                 onBlur={handleBlurSubtitle1}
                                 onChange={(e) => {
                                     e.target.value = e.target.value.replace(/[\n\r]/g, '');
+                                    if (e.target.value.length > 32) {
+                                        e.target.value = e.target.value.substring(0, 32);
+                                    }
                                     handleChange(e, setDataSubtitle1);
                                 }}
                                 onSave={({value}) => handleSave(value, saveSubtitle1)}
@@ -308,7 +316,7 @@ const AdminHome = () => {
                         </Box>
                         <Box sx={{mb: 3}} display="flex" flexDirection="column" justifyContent="left" alignItems="start" textAlign="left">
                             <Typography variant="h6" fontWeight="bold">Subtitle 2</Typography>
-                            <Typography variant="caption" sx={{ mb: 1 }}>Maximum length 32 characters. Current: {dataSubtitle2.length} characters</Typography>
+                            <Typography variant="caption" sx={{ mb: 1 }}>Maximum length 32 characters. Current: {dataSubtitle2.length} characters.</Typography>
                             <EditTextarea
                                 id='subtitle2'
                                 name='subtitle2'
@@ -318,6 +326,9 @@ const AdminHome = () => {
                                 onBlur={handleBlurSubtitle2}
                                 onChange={(e) => {
                                     e.target.value = e.target.value.replace(/[\n\r]/g, '');
+                                    if (e.target.value.length > 32) {
+                                        e.target.value = e.target.value.substring(0, 32);
+                                    }
                                     handleChange(e, setDataSubtitle2);
                                 }}
                                 onSave={({value}) => handleSave(value, saveSubtitle2)}

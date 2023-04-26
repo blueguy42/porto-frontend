@@ -113,7 +113,7 @@ const AdminSettings = () => {
 
     return (
         <>
-            <motion.div key={`${pageLoad}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
+            <motion.div key={`${pageLoad && dataSuperuser !== -1 && dataEmails !== -1}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
                 {pageLoad && dataSuperuser !== -1 && dataEmails !== -1 ?
                 <>
                 <Grow in={true} timeout={1000}>

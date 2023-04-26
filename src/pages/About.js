@@ -48,7 +48,7 @@ const About = () => {
 
     return (
         <>
-            <motion.div key={`${slogan} ${description} ${links}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
+            <motion.div key={`${slogan !== -1 && description !== -1 && links !== -1}`} exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{width: "100%"}}>
                 { slogan !== -1 && description !== -1 && links !== -1 ?
                 <>
                 <Grow in={true} timeout={1000}>
