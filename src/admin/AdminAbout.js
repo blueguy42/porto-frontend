@@ -265,7 +265,7 @@ const AdminAbout = () => {
         if (linkedin.length === 0) {
             valid = false;
             setLinkedInError('LinkedIn cannot be empty');
-        } else if (!linkedin.match(/^(http(s)?:)?\/\/([\w]+\.)?linkedin\.com\/(pub|in|profile)\/([-a-zA-Z0-9]+)\/*/g)) {
+        } else if (!linkedin.match(/^(http(s)?:)?\/\/([\w]+\.)?linkedin\.com\/(pub|in|profile)\/([-a-zA-Z0-9]+)\/*$/g)) {
             valid = false;
             setLinkedInError('LinkedIn does not have a valid LinkedIn URL format.');
         }
@@ -300,7 +300,7 @@ const AdminAbout = () => {
         if (github.length === 0) {
             valid = false;
             setGitHubError('GitHub cannot be empty');
-        } else if (!github.match(/^(http(s)?:)?\/\/(www\.)?github\.com\/([A-z0-9_-]+)\/*/g)) {
+        } else if (!github.match(/^(http(s)?:)?\/\/(www\.)?github\.com\/([_-a-zA-Z0-9]+)\/*$/g)) {
             valid = false;
             setGitHubError('GitHub does not have a valid GitHub URL format.');
         }
@@ -335,7 +335,7 @@ const AdminAbout = () => {
         if (instagram.length === 0) {
             valid = false;
             setInstagramError('Instagram cannot be empty');
-        } else if (!instagram.match(/^(http(s)?:)?\/\/(www\.)?instagram\.com\/([A-z0-9-_\.]+)\/*/g)) {
+        } else if (!instagram.match(/^(http(s)?:)?\/\/(www\.)?instagram\.com\/([_.a-zA-Z0-9]+)\/*$/g)) {
             valid = false;
             setInstagramError('Instagram does not have a valid Instagram URL format.');
         }
