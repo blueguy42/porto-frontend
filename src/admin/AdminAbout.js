@@ -16,12 +16,11 @@ const AdminAbout = () => {
     useEffect(() => {
         if (!ls.Get('token')) {
             setPageLoad(false);
-            navigate('/admin/login');
         } else {
             setToken(ls.Get('token'));
             setPageLoad(true);
         }
-    }, [navigate]);
+    }, []);
 
     return (
         <>

@@ -16,18 +16,26 @@ const AdminApp = () => {
   const path = PathnameArray();
 
   useEffect(() => {
-    if (location.pathname !== '/admin/login') {
+    if (ls.Get('token')) {
       axios.post(process.env.REACT_APP_BASE_URL + 'auth/validate', { token: ls.Get('token') })
         .then(response => {
-          //pass
+          if (location.pathname === '/admin/login') {
+            navigate('/admin/home');
+          }
         }).catch((error) => {
             ls.Remove('token');
             ls.Remove('email');
             ls.Remove('name');
-            navigate('/admin/login');
+            if (location.pathname !== '/admin/login') {
+              navigate('/admin/login');
+            }
         });
+    } else {
+      if (location.pathname !== '/admin/login') {
+        navigate('/admin/login');
+      }
     }
-  }, []);
+  }, [navigate, location.pathname]);
   return (
       <>
         <AdminNavbar />

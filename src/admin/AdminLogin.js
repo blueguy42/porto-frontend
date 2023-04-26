@@ -61,11 +61,10 @@ const AdminLogin = () => {
     useEffect(() => {
         if (ls.Get('token')) {
             setPageLoad(false);
-            navigate('/admin/home');
         } else {
             setPageLoad(true);
         }
-    }, [navigate]);
+    }, []);
 
     return (
         <>
