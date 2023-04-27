@@ -433,7 +433,7 @@ const AdminAbout = () => {
                                 value={descriptionMode}
                                 fullWidth
                                 exclusive
-                                onChange={(e, value) => {setDescriptionMode(value); console.log(value)}}
+                                onChange={(e, value) => {if (value !== null) setDescriptionMode(value)}}
                                 aria-label="Description Mode"
                             >
                                 <ToggleButton value="edit" sx={{ px: 2 }}><Code sx={{ mr: 1 }}/> Edit</ToggleButton>
