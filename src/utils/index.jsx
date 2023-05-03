@@ -1,5 +1,6 @@
 import BreakpointName from './BreakpointName';
 import PathnameArray from './PathnameArray';
-const ls = require('./ls');
+
+import * as ls from './ls'
 
 export { BreakpointName, PathnameArray, ls };

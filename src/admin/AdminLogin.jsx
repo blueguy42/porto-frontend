@@ -34,7 +34,7 @@ const AdminLogin = () => {
             const token = result.user.accessToken;
             const email = result.user.email;
             const name = result.user.displayName;
-            axios.get(process.env.REACT_APP_BASE_URL + 'email/get')
+            axios.get(import.meta.env.VITE_BASE_URL + 'email/get')
             .then(response => {
                 const validAdmin = response.data.admin;
                 const validEmails = response.data.email;

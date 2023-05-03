@@ -57,7 +57,7 @@ const AdminAbout = () => {
 
     useEffect(() => {
         if (token) {
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getSlogan')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getSlogan')
             .then(response => {
                 setDataSlogan(response.data.slogan);
             }).catch((error) => {
@@ -65,7 +65,7 @@ const AdminAbout = () => {
                 setSloganError('Error retrieving slogan');
             });
 
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getDescription')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getDescription')
             .then(response => {
                 setDataDescription(response.data.description);         
             }).catch((error) => {
@@ -73,7 +73,7 @@ const AdminAbout = () => {
                 setDescriptionError('Error retrieving description');
             });
 
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getLink')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getLink')
             .then(response => {
                 setDataEmail(response.data.email);
                 setDataLinkedIn(response.data.linkedin);
@@ -167,7 +167,7 @@ const AdminAbout = () => {
         setDataSlogan(slogan);
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'about/putSlogan', { slogan }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'about/putSlogan', { slogan }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setSloganError('');
             }).catch((error) => {
@@ -177,7 +177,7 @@ const AdminAbout = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getSlogan')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getSlogan')
             .then(response => {
                 setDataSlogan(response.data.slogan);
             }).catch((error) => {
@@ -201,7 +201,7 @@ const AdminAbout = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'about/putDescription', { description }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'about/putDescription', { description }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setDescriptionError('');
             }).catch((error) => {
@@ -211,7 +211,7 @@ const AdminAbout = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getDescription')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getDescription')
             .then(response => {
                 setDataDescription(response.data.description);
             }).catch((error) => {
@@ -236,7 +236,7 @@ const AdminAbout = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'about/putEmail', { email }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'about/putEmail', { email }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setEmailError('');
             }).catch((error) => {
@@ -246,7 +246,7 @@ const AdminAbout = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getLink')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getLink')
             .then(response => {
                 setDataEmail(response.data.email);
             }).catch((error) => {
@@ -271,7 +271,7 @@ const AdminAbout = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'about/putLinkedIn', { linkedin }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'about/putLinkedIn', { linkedin }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setLinkedInError('');
             }).catch((error) => {
@@ -281,7 +281,7 @@ const AdminAbout = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getLink')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getLink')
             .then(response => {
                 setDataLinkedIn(response.data.linkedin);
             }).catch((error) => {
@@ -306,7 +306,7 @@ const AdminAbout = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'about/putGitHub', { github }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'about/putGitHub', { github }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setGitHubError('');
             }).catch((error) => {
@@ -316,7 +316,7 @@ const AdminAbout = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getLink')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getLink')
             .then(response => {
                 setDataGitHub(response.data.github);
             }).catch((error) => {
@@ -341,7 +341,7 @@ const AdminAbout = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'about/putInstagram', { instagram }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'about/putInstagram', { instagram }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setInstagramError('');
             }).catch((error) => {
@@ -351,7 +351,7 @@ const AdminAbout = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'about/getLink')
+            axios.get(import.meta.env.VITE_BASE_URL + 'about/getLink')
             .then(response => {
                 setDataInstagram(response.data.instagram);
             }).catch((error) => {

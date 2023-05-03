@@ -19,14 +19,14 @@ const About = () => {
     const [ cvUrl, setCvUrl ] = useState(-1);
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_BASE_URL + 'about/getSlogan')
+        axios.get(import.meta.env.VITE_BASE_URL + 'about/getSlogan')
         .then(response => {
             setSlogan((response.data.slogan).split(/\r\n|\r|\n/));
         }).catch((error) => {
             console.error(error);
         });
 
-        axios.get(process.env.REACT_APP_BASE_URL + 'about/getDescription')
+        axios.get(import.meta.env.VITE_BASE_URL + 'about/getDescription')
         .then(response => {
             setDescription(response.data.description);
         }
@@ -34,7 +34,7 @@ const About = () => {
             console.error(error);
         });
 
-        axios.get(process.env.REACT_APP_BASE_URL + 'about/getLink')
+        axios.get(import.meta.env.VITE_BASE_URL + 'about/getLink')
         .then(response => {
             const email = response.data.email;
             const linkedin = response.data.linkedin;
@@ -46,7 +46,7 @@ const About = () => {
             console.error(error);
         });
 
-        axios.get(process.env.REACT_APP_BASE_URL + 'storage/getCvUrl')
+        axios.get(import.meta.env.VITE_BASE_URL + 'storage/getCvUrl')
         .then(response => {
             setCvUrl(response.data.url);
         }).catch((error) => {
@@ -89,7 +89,7 @@ const About = () => {
                                     }}>
                                     <Link href={cvUrl} target="_blank" rel="noopener noreferrer">
                                         <Button>
-                                            <Typography variant={ breakpoint == 'xs' ? 'body1' : 'h6'} fontWeight="bold">
+                                            <Typography variant={ breakpoint === 'xs' ? 'body1' : 'h6'} fontWeight="bold">
                                                 Download CV
                                             </Typography>
                                         </Button>

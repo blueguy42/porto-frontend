@@ -17,7 +17,7 @@ const AdminApp = () => {
 
   useEffect(() => {
     if (ls.Get('token')) {
-      axios.post(process.env.REACT_APP_BASE_URL + 'auth/validate', { token: ls.Get('token') })
+      axios.post(import.meta.env.VITE_BASE_URL + 'auth/validate', { token: ls.Get('token') })
         .then(response => {
           if (location.pathname === '/admin/login') {
             navigate('/admin/home');

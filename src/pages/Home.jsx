@@ -19,7 +19,7 @@ const Home = () => {
     const [ subtitle2, setSubtitle2 ] = useState(-1);
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
+        axios.get(import.meta.env.VITE_BASE_URL + 'personal/get')
         .then(response => {
             setName(response.data.data.name);
             setNickname(response.data.data.nickname);

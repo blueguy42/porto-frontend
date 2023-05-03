@@ -45,7 +45,7 @@ const AdminHome = () => {
 
     useEffect(() => {
         if (token) {
-            axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
+            axios.get(import.meta.env.VITE_BASE_URL + 'personal/get')
             .then(response => {
                 setDataName(response.data.data.name);
                 setDataNickname(response.data.data.nickname);
@@ -114,7 +114,7 @@ const AdminHome = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'personal/putName', { name }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'personal/putName', { name }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setNameError('');
             }).catch((error) => {
@@ -124,7 +124,7 @@ const AdminHome = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
+            axios.get(import.meta.env.VITE_BASE_URL + 'personal/get')
             .then(response => {
                 setDataName(response.data.data.name);
             }).catch((error) => {
@@ -146,7 +146,7 @@ const AdminHome = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'personal/putNickname', { nickname }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'personal/putNickname', { nickname }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setNicknameError('');
             }).catch((error) => {
@@ -156,7 +156,7 @@ const AdminHome = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
+            axios.get(import.meta.env.VITE_BASE_URL + 'personal/get')
             .then(response => {
                 setDataNickname(response.data.data.nickname);
             }).catch((error) => {
@@ -178,7 +178,7 @@ const AdminHome = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'personal/putSubtitle1', { subtitle1 }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'personal/putSubtitle1', { subtitle1 }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setSubtitle1Error('');
             }).catch((error) => {
@@ -188,7 +188,7 @@ const AdminHome = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
+            axios.get(import.meta.env.VITE_BASE_URL + 'personal/get')
             .then(response => {
                 setDataSubtitle1(response.data.data.subtitle1);
             }).catch((error) => {
@@ -210,7 +210,7 @@ const AdminHome = () => {
         }
 
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'personal/putSubtitle2', { subtitle2 }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'personal/putSubtitle2', { subtitle2 }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setSubtitle2Error('');
             }).catch((error) => {
@@ -220,7 +220,7 @@ const AdminHome = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'personal/get')
+            axios.get(import.meta.env.VITE_BASE_URL + 'personal/get')
             .then(response => {
                 setDataSubtitle2(response.data.data.subtitle2);
             }).catch((error) => {

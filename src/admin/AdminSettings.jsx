@@ -35,7 +35,7 @@ const AdminSettings = () => {
 
     useEffect(() => {
         if (token) {
-            axios.get(process.env.REACT_APP_BASE_URL + 'email/get')
+            axios.get(import.meta.env.VITE_BASE_URL + 'email/get')
             .then(response => {
                 setDataSuperuser(response.data.admin);
                 const validEmails = response.data.email;
@@ -81,7 +81,7 @@ const AdminSettings = () => {
             }
         });
         if (valid) {
-            axios.put(process.env.REACT_APP_BASE_URL + 'email/put', { email: validEmails }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
+            axios.put(import.meta.env.VITE_BASE_URL + 'email/put', { email: validEmails }, {headers: {'Authorization': `Bearer ${ls.Get('token')}`}})
             .then(response => {
                 setEmailError('');
             }).catch((error) => {
@@ -91,7 +91,7 @@ const AdminSettings = () => {
                 navigate('/admin/login');
             });
         } else {
-            axios.get(process.env.REACT_APP_BASE_URL + 'email/get')
+            axios.get(import.meta.env.VITE_BASE_URL + 'email/get')
             .then(response => {
                 setDataSuperuser(response.data.admin);
                 const validEmails = response.data.email;
