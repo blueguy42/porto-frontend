@@ -31,9 +31,7 @@ const App = () => {
             </AnimatePresence>
           </Box>
         </main>
-        <AnimatePresence mode='wait'>
-          <Footer />
-        </AnimatePresence>
+        <Footer />
       </>}
     </>
   );
