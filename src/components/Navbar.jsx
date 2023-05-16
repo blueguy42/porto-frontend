@@ -17,13 +17,13 @@ const Navbar = () => {
                     {breakpoint === 'xs' ?
                         <>
                             <NavLink to="/" end><IconButton title="Home"> <Home /> </IconButton></NavLink>
-                            <NavLink to="/projects"><IconButton title="Projects"> <AccountTree /> </IconButton></NavLink>
+                            {/* <NavLink to="/projects"><IconButton title="Projects"> <AccountTree /> </IconButton></NavLink> */}
                             <NavLink to="/about" end><IconButton title="About"> <Person2 /> </IconButton></NavLink>
                         </>
                         :
                         <>
                             <NavLink to="/" end><Button>Home</Button></NavLink>
-                            <NavLink to="/projects"><Button>Projects</Button></NavLink>
+                            {/* <NavLink to="/projects"><Button>Projects</Button></NavLink> */}
                             <NavLink to="/about" end><Button>About</Button></NavLink>
                         </>
                         }
