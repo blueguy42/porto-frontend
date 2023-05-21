@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './components';
 import { Box } from '@mui/material';
