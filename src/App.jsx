@@ -9,7 +9,6 @@ import { Home, Projects, About, Test, Copyright, Page404 } from './pages';
 import { AdminApp } from './admin';
 
 import axios from "axios";
-import { publicIpv4 } from 'public-ip';
 import {Buffer} from 'buffer';
 
 const App = () => {
@@ -17,7 +16,9 @@ const App = () => {
   const path = PathnameArray();
 
   useEffect(() => {
-    publicIpv4().then(ip => {
+    axios.get("https://api.ipify.org/?format=json")
+    .then(response => {
+      const ip = response.data.ip;
       const base64 = Buffer.from(ip).toString('base64');
       axios.post(import.meta.env.VITE_BASE_URL + 'misc/visit', {loc: base64})
       .then()
