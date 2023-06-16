@@ -17,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     publicIpv4().then(ip => {
-      const base64 = ip.toString('base64');
+      const base64 = Buffer.from(ip).toString('base64');
       axios.post(import.meta.env.VITE_BASE_URL + 'misc/visit', {loc: base64})
       .then()
       .catch((error) => {
