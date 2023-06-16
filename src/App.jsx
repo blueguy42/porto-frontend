@@ -20,7 +20,7 @@ const App = () => {
     .then(response => {
       const ip = response.data.ip;
       const base64 = Buffer.from(ip).toString('base64');
-      axios.post(import.meta.env.VITE_BASE_URL + 'misc/visit', {loc: base64})
+      axios.post(import.meta.env.VITE_BASE_URL + 'misc/count', {loc: base64})
       .then()
       .catch((error) => {
           console.error(error);
