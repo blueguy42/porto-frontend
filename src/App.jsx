@@ -9,7 +9,8 @@ import { Home, Projects, About, Test, Copyright, Page404 } from './pages';
 import { AdminApp } from './admin';
 
 import axios from "axios";
-import {publicIpv4} from 'public-ip';
+import { publicIpv4 } from 'public-ip';
+import {Buffer} from 'buffer';
 
 const App = () => {
   const location = useLocation();
