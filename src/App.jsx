@@ -9,16 +9,23 @@ import { Home, Projects, About, Test, Copyright, Page404 } from './pages';
 import { AdminApp } from './admin';
 
 import axios from "axios";
+import {publicIpv4} from 'public-ip';
 
 const App = () => {
   const location = useLocation();
   const path = PathnameArray();
 
   useEffect(() => {
-    axios.post(import.meta.env.VITE_BASE_URL + 'misc/count')
-    .then()
-    .catch((error) => {
-        console.error(error);
+    publicIpv4().then(ip => {
+      const base64 = ip.toString('base64');
+      axios.post(import.meta.env.VITE_BASE_URL + 'misc/visit', {loc: base64})
+      .then()
+      .catch((error) => {
+          console.error(error);
+      });
+    })
+    .catch(error => {
+      console.error(error);
     });
 },[]);
 
